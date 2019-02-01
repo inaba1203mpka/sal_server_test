@@ -1,0 +1,230 @@
+{% extends "sal_project/base.html" %}
+
+{% block content %}
+    
+  <div class="container">
+    <div class="row no-gutters">
+      <div class="col-4 offset-4">
+        <h1 class="my-3 text-center">施設検索</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-10 offset-1">
+        <div class="card mb-5">
+          <div class="card-body">
+            <form>
+              <div class="row">
+                <div class="col-4">
+                  <div class="form-group mb-2">
+                    <label for="purpose">目的</label>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="form-group mb-2">
+                    <label for="area">場所</label>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-4">
+                  <div class="form-group mb-2">
+                    <select class="custom-select" name="purpose">
+                      <option>a</option>
+                      <option>b</option>
+                      <option>c</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-4">
+                  <div class="form-group mb-2">
+                    <select class="custom-select" name="area">
+                      <option>a</option>
+                      <option>b</option>
+                      <option>c</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-2 offset-1">
+                  <div class="form-group mb-4">
+                    <button type="submit" class="btn btn-primary mb-2">施設検索</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-8 offset-2">
+      <div class="card">
+        <div class="card-header">
+          <h3>とみうら元気倶楽部</h3>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-4" style="height:300px">
+              <img src="sal1.jpg" class="card-img mb-2">
+            </div>
+            <div class="col-8">
+              <div class="row">
+                <div class="col-12">
+                  <h2>施設説明</h2>
+                </div>
+                <div class="col-12">
+                  <p>・とみうら元気倶楽部は、富浦地区の市民のみなさまにさまざまな教育・学習の機会を提供する公民館機能と健康づくりを推進する保健センター機能を備えた複合施設です。</p>
+                </div>
+              </div>
+              <form>
+                <div class="row">
+                  <div class="col-6 offset-3">
+                    <div class="form-group mb-4 mt-3">
+                      <label for="room">室名</label>
+                      <select class="custom-select" name="room">
+                        <option>浴室(男湯:~12名,女湯:~12名)</option>
+                        <option>健康相談室(~20名)</option>
+                        <option>健康増進室(~15名)</option>
+                        <option>交流室(~30名)</option>
+                        <option>多目的室(~40名)</option>
+                        <option>さざなみホール(~180名※座席:114席)</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-2 text-right mt-5">
+                    <button type="submit" class="btn btn-primary mb-3">詳細へ</button>
+                  </div>
+                </div>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3>施設名</h3>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-4" style="height:300px">
+              <img src="no_image.jpg" class="card-img mb-2">
+            </div>
+            <div class="col-8">
+              <div class="row">
+                <div class="col-12">
+                  <h2>施設説明</h2>
+                </div>
+                <div class="col-12">
+                  <p>・説明文</p>
+                </div>
+              </div>
+              <form>
+                <div class="row">
+                  <div class="col-6 offset-3">
+                    <div class="form-group mb-4 mt-3">
+                      <label for="room">室名</label>
+                      <select class="custom-select" name="room">
+                        <option>a</option>
+                        <option>b</option>
+                        <option>c</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-2 text-right mt-5">
+                    <button type="submit" class="btn btn-primary mb-3">詳細へ</button>
+                  </div>
+                </div>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3>室名</h3>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-4" style="height:300px">
+              <img src="no_image.jpg" class="card-img mb-2">
+            </div>
+            <div class="col-8">
+              <div class="row">
+                <div class="col-12">
+                  <h2>施設説明</h2>
+                </div>
+                <div class="col-12">
+                  <p>・説明文</p>
+                </div>
+              </div>
+              <form>
+                <div class="row">
+                  <div class="col-6 offset-3">
+                    <div class="form-group mb-4 mt-3">
+                      <label for="room">室名</label>
+                      <select class="custom-select" name="room">
+                        <option>a</option>
+                        <option>b</option>
+                        <option>c</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-2 text-right mt-5">
+                    <button type="submit" class="btn btn-primary mb-3">詳細へ</button>
+                  </div>
+                </div>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3>施設名</h3>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-4" style="height:300px">
+              <img src="no_image.jpg" class="card-img mb-2">
+            </div>
+            <div class="col-8">
+              <div class="row">
+                <div class="col-12">
+                  <h2>施設説明</h2>
+                </div>
+                <div class="col-12">
+                  <p>・説明文</p>
+                </div>
+              </div>
+              <form>
+                <div class="row">
+                  <div class="col-6 offset-3">
+                    <div class="form-group mb-4 mt-3">
+                      <label for="room">室名</label>
+                      <select class="custom-select" name="room">
+                        <option>a</option>
+                        <option>b</option>
+                        <option>c</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-2 text-right mt-5">
+                    <button type="submit" class="btn btn-primary mb-3">詳細へ</button>
+                  </div>
+                </div>
+            </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </div>
+  </div>
+
+{% endblock content %}
