@@ -2,18 +2,51 @@ from django.db import models
 
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager
+from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.core.mail import send_mail
-import uuid as uuid_lib
+
+
+class UserManager(BaseUserManager):
+    """ユーザーマネージャー."""
+
+    use_in_migrations = True
+
+    def _create_user(self, email, password, **extra_fields):
+        """メールアドレスでの登録を必須にする"""
+        if not email:
+            raise ValueError('The given email must be set')
+        email = self.normalize_email(email)
+
+        user = self.model(email=email, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_user(self, email, password=None, **extra_fields):
+        """is_staff(管理サイトにログインできるか)と、is_superuer(全ての権限)をFalseに"""
+        extra_fields.setdefault('is_staff', False)
+        extra_fields.setdefault('is_superuser', False)
+        return self._create_user(email, password, **extra_fields)
+
+    def create_superuser(self, email, password, **extra_fields):
+        """スーパーユーザーは、is_staffとis_superuserをTrueに"""
+        extra_fields.setdefault('is_staff', True)
+        extra_fields.setdefault('is_superuser', True)
+
+        if extra_fields.get('is_staff') is not True:
+            raise ValueError('Superuser must have is_staff=True.')
+        if extra_fields.get('is_superuser') is not True:
+            raise ValueError('Superuser must have is_superuser=True.')
+
+        return self._create_user(email, password, **extra_fields)
 
 
 class User(AbstractBaseUser, PermissionsMixin):
     """ユーザー AbstractUserをコピペし編集"""
 
-    uuid = models.UUIDField(default=uuid_lib.uuid4,
-                            primary_key=True, editable=False)
     username_validator = UnicodeUsernameValidator()
 
     username = models.CharField(
@@ -27,7 +60,8 @@ class User(AbstractBaseUser, PermissionsMixin):
             'unique': _("A user with that username already exists."),
         },
     )
-    full_name = models.CharField(_('氏名'), max_length=150, blank=True)
+    first_name = models.CharField(_('first name'), max_length=30, blank=True)
+    last_name = models.CharField(_('last name'), max_length=150, blank=True)
     email = models.EmailField(_('email address'), blank=True)
 
     #追加 電話番号
@@ -68,11 +102,11 @@ class User(AbstractBaseUser, PermissionsMixin):
         send_mail(subject, message, from_email, [self.email], **kwargs)
 
     # 既存メソッドの変更
-    def get_full_name(self):
-        return self.full_name
+    def get_first_name(self):
+        return self.first_name
 
-    def get_short_name(self):
-        return self.full_name
+    def get_last_name(self):
+        return self.last_name
 
     #追加
     def get_phone(self):

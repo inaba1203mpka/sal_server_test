@@ -122,7 +122,8 @@ STATIC_URL = '/static/'
 
 
 
-# 追加
+
+#-- 追加 ---------------------------------------------------------------------------------
 
 # 認証するユーザーモデル
 AUTH_USER_MODEL = 'system.User'
@@ -130,3 +131,6 @@ AUTH_USER_MODEL = 'system.User'
 LOGIN_URL = 'system:login'
 # ログイン後の画面
 LOGIN_REDIRECT_URL = 'system:top'
+
+# メールをコンソールに表示する
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
