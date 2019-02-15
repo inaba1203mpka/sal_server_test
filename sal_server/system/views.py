@@ -105,3 +105,10 @@ class UserCreateComplete(generic.TemplateView):
         return HttpResponseBadRequest()
 
 
+#  予約系
+class Reservation_create(generic.CreateView):
+    """ 予約作成 """ 
+    model = Reservation
+    template_name = 'system/reservation_create.html'
+    form_class = ReservationForm
+    success_url = "/"
