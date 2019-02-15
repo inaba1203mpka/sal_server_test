@@ -1,6 +1,4 @@
 from django.db import models
-
-from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, UserManager
 from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.validators import UnicodeUsernameValidator
@@ -45,7 +43,15 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    """ユーザー AbstractUserをコピペし編集"""
+    #ユーザー AbstractUserをコピペし編集
+    """
+    User
+        ユーザーネーム : username
+        姓 : last_name
+        名 : first_name
+        メール : email
+        電話番号 : phone
+    """
 
     username_validator = UnicodeUsernameValidator()
 
@@ -60,12 +66,12 @@ class User(AbstractBaseUser, PermissionsMixin):
             'unique': _("A user with that username already exists."),
         },
     )
-    first_name = models.CharField(_('first name'), max_length=30, blank=True)
-    last_name = models.CharField(_('last name'), max_length=150, blank=True)
-    email = models.EmailField(_('email address'), blank=True)
+    first_name = models.CharField(_('姓'), max_length=30, blank=True)
+    last_name = models.CharField(_('名'), max_length=150, blank=True)
+    email = models.EmailField(_('メールアドレス'), blank=True)
 
     #追加 電話番号
-    phone = models.CharField(max_length=12)
+    phone = models.CharField(_('電話番号'),max_length=12)
 
     is_staff = models.BooleanField(
         _('staff status'),
@@ -111,3 +117,39 @@ class User(AbstractBaseUser, PermissionsMixin):
     #追加
     def get_phone(self):
         return self.phone
+
+    
+
+class Reservation(models.Model) : 
+    """
+    予約
+        姓 : last_name
+        名 : first_name
+        団体名 : group
+        施設番号 : facility_num
+        利用種別 : use_kind
+        人数_市内_男 : man_in
+        人数_市内_女 : woman_in
+        人数_市外_男 : man_out
+        人数_市外_女 : woman_out
+        送信用メールアドレス : email
+        電話番号 : phone
+        日付 : date
+        利用時間 : time_for
+    """
+    last_name = models.CharField("姓",max_length=10)
+    first_name = models.CharField("名",max_length=10)
+    group = models.CharField("団体名",max_length=30)
+    facility_num = models.PositiveIntegerField("施設番号")
+    use_kind = models.PositiveIntegerField("利用種別")
+    man_in = models.PositiveIntegerField("市内男性人数")
+    man_out = models.PositiveIntegerField("市内女性人数")
+    woman_in = models.PositiveIntegerField("市外男性人数")
+    woman_out = models.PositiveIntegerField("市外女性人数")
+    email = models.EmailField("メールアドレス",max_length = 200,unique=True)
+    phone = models.PositiveIntegerField("電話番号")
+    date = models.DateTimeField("日付")
+    time_for = models.PositiveIntegerField("利用時間")
+    
+
+
