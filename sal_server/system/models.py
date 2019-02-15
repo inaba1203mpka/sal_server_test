@@ -143,8 +143,8 @@ class Reservation(models.Model) :
     last_name = models.CharField("姓",max_length=10)
     first_name = models.CharField("名",max_length=10)
     group = models.CharField("団体名",max_length=30)
-    facility = models.ForeignKey(Facility,on_delete=models.CASCADE)
-    use_kind = models.ForeignKey(UseKind,on_delete=models.CASCADE)
+    facility = models.ForeignKey('Facility',on_delete=models.CASCADE)
+    use_kind = models.ForeignKey('UseKind',on_delete=models.CASCADE)
     man_in = models.PositiveIntegerField("市内男性人数")
     man_out = models.PositiveIntegerField("市内女性人数")
     woman_in = models.PositiveIntegerField("市外男性人数")
@@ -166,7 +166,7 @@ class Facility(models.Model):
 
     """
     facility = models.CharField("施設名",max_length=30)
-    Area = models.ForeignKey(Place,on_delete=models.CASCADE)
+    Area = models.ForeignKey('Area',on_delete=models.CASCADE)
     address = models.CharField("住所",max_length=300)
     picture = models.CharField("画像",max_length=300)
 
