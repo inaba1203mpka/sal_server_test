@@ -115,8 +115,18 @@ class Reservation_create(LoginRequiredMixin, generic.CreateView):
     form_class = ReservationForm
     success_url = "/"
 
+    #ログイン中のユーザのidを格納 -- まだ未完成
+    def form_valid(self, form):
+        form.instance.user_id = self.request.user.id
+        return super(Reservation_create, self).form_valid(form)
+
     #ここにメールの処理
 
-#class Reservation_list(generic.ListView) :
+class Reservation_list(LoginRequiredMixin, generic.ListView) :
     """ 予約一覧 """
+    model = Reservation
+    #queryset = Reservation.objects.filter(user_id = user)
+    template_name = 'system/reservation_list.html'
+    paginate_by = 5
+    
     

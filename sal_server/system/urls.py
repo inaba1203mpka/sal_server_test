@@ -16,4 +16,5 @@ urlpatterns = [
 
     #予約系
     path('reservation_create/', views.Reservation_create.as_view(),name='reservation_create'),
+    path('reservation_list/', views.Reservation_list.as_view(),name='reservation_list'),
 ]
