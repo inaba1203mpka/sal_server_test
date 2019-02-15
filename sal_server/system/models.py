@@ -168,7 +168,7 @@ class Facility(models.Model):
     facility = models.CharField("施設名",max_length=30)
     Area = models.ForeignKey(Place,on_delete=models.CASCADE)
     address = models.CharField("住所",max_length=300)
-    picture = models.CharField("画像"max_length=300)
+    picture = models.CharField("画像",max_length=300)
 
     def get_facility(self):
         return self.facility

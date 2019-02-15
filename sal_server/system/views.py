@@ -103,3 +103,5 @@ class UserCreateComplete(generic.TemplateView):
                     return super().get(request, **kwargs)
 
         return HttpResponseBadRequest()
+
+
