@@ -9,6 +9,7 @@ User = get_user_model()
 
 class LoginForm(AuthenticationForm):
     """ログインフォーム"""
+    #Bootstrap用
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field in self.fields.values():
@@ -24,7 +25,7 @@ class UserCreateForm(UserCreationForm):
             fields = ('email',)
         else:
             fields = ('username', 'email')
-
+    #Bootstarap用
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field in self.fields.values():
@@ -32,14 +33,12 @@ class UserCreateForm(UserCreationForm):
 
 
 class ReservationForm(forms.ModelForm):
-    """予約フォーム
+    """予約フォーム"""
     class Meta :
         model = Reservation
-        fields = []
-    
+        fields = ['last_name','first_name','group','facility','use_kind','man_in','woman_in','man_out','woman_out','email','phone','date_select','time_for']
+    #Bootstrap用
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field in self.fields.values():
             field.widget.attrs['class'] = 'form-control'
-    """
-    pass
