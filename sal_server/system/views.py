@@ -17,6 +17,8 @@ from .forms import (
 from django.contrib.auth import get_user_model
 User = get_user_model() #Userモデルの取得
 
+from .models import Reservation
+from .forms import ReservationForm
 
 # TOPページ
 class Top(LoginRequiredMixin, generic.TemplateView):
@@ -106,7 +108,7 @@ class UserCreateComplete(generic.TemplateView):
 
 
 #  予約系
-class Reservation_create(generic.CreateView):
+class Reservation_create(LoginRequiredMixin, generic.CreateView):
     """ 予約作成 """ 
     model = Reservation
     template_name = 'system/reservation_create.html'

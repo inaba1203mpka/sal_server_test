@@ -13,4 +13,7 @@ urlpatterns = [
     path('user_create/', views.UserCreate.as_view(), name='user_create'),
     path('user_create/done', views.UserCreateDone.as_view(), name='user_create_done'),
     path('user_create/complete/<token>/', views.UserCreateComplete.as_view(), name='user_create_complete'),
+
+    #予約系
+    path('reservation_create/', views.Reservation_create.as_view(),name='reservation_create'),
 ]

@@ -2,6 +2,7 @@ from .models import User
 from django.contrib.auth.admin import UserAdmin
 from django.contrib import admin
 from django.utils.translation import gettext, gettext_lazy as _
+from .models import *
 
 @admin.register(User)
 class AdminUserAdmin(UserAdmin):
@@ -16,3 +17,9 @@ class AdminUserAdmin(UserAdmin):
     list_display = ('username', 'email', 'first_name','last_name',  'is_staff')
     search_fields = ('username', 'first_name','last_name',  'email')
     filter_horizontal = ('groups', 'user_permissions')
+
+admin.site.register(Reservation)
+admin.site.register(Facility)
+admin.site.register(Room)
+admin.site.register(UseKind)
+admin.site.register(Area)
