@@ -163,12 +163,14 @@ class Facility(models.Model):
         エリア : area
         住所 : address
         画像id : picture
+        部屋 : room
 
     """
     facility = models.CharField("施設名",max_length=30)
     Area = models.ForeignKey('Area',on_delete=models.CASCADE)
     address = models.CharField("住所",max_length=300)
     picture = models.CharField("画像",max_length=300)
+    room = models.ForeignKey('Room',on_delete=models.CASCADE)
 
     def get_facility(self):
         return self.facility
@@ -181,6 +183,19 @@ class Facility(models.Model):
 
     def get_area(self):
         return self.area
+
+    def get_room(self):
+        return seld.room
+
+
+
+
+""" 部屋 """
+class Room(self):
+    """
+        部屋名 : room
+    """
+    room = models.CharField("部屋名",max_length=30)
 
 
 
