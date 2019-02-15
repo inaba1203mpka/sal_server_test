@@ -120,36 +120,88 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     
 
+
+""" 予約 """
 class Reservation(models.Model) : 
     """
-    予約
+        id : user_id (もしログインしていたらログインユーザのidを格納)
         姓 : last_name
         名 : first_name
         団体名 : group
-        施設番号 : facility_num
-        利用種別 : use_kind
+        施設 : facility
+        利用目的 : use_kind
         人数_市内_男 : man_in
         人数_市内_女 : woman_in
         人数_市外_男 : man_out
         人数_市外_女 : woman_out
         送信用メールアドレス : email
         電話番号 : phone
-        日付 : date
+        予約日付 : date_select
         利用時間 : time_for
     """
+    user_id = models.IntegerField(default=-1)
     last_name = models.CharField("姓",max_length=10)
     first_name = models.CharField("名",max_length=10)
     group = models.CharField("団体名",max_length=30)
-    facility_num = models.PositiveIntegerField("施設番号")
-    use_kind = models.PositiveIntegerField("利用種別")
+    facility = models.ForeignKey(Facility,on_delete=models.CASCADE)
+    use_kind = models.ForeignKey(UseKind,on_delete=models.CASCADE)
     man_in = models.PositiveIntegerField("市内男性人数")
     man_out = models.PositiveIntegerField("市内女性人数")
     woman_in = models.PositiveIntegerField("市外男性人数")
     woman_out = models.PositiveIntegerField("市外女性人数")
     email = models.EmailField("メールアドレス",max_length = 200,unique=True)
     phone = models.PositiveIntegerField("電話番号")
-    date = models.DateTimeField("日付")
+    date_select = models.DateTimeField("日付")
     time_for = models.PositiveIntegerField("利用時間")
     
 
 
+""" 施設 """
+class Facility(models.Model):
+    """
+        施設名 : facility
+        エリア : area
+        住所 : address
+        画像id : picture
+
+    """
+    facility = models.CharField("施設名",max_length=30)
+    Area = models.ForeignKey(Place,on_delete=models.CASCADE)
+    address = models.CharField("住所",max_length=300)
+    picture = models.CharField("画像"max_length=300)
+
+    def get_facility(self):
+        return self.facility
+
+    def get_address(self):
+        return self.address
+
+    def get_picture(self):
+        return self.picture
+
+    def get_area(self):
+        return self.area
+
+
+
+""" 利用目的 """
+class UseKind(models.Model):
+    """
+        利用目的 : use
+    """
+    use = models.CharField("利用目的",max_length=50)
+    
+    def get_use(self):
+        return self.use
+
+
+
+""" 検索用場所 """
+class Area(models.Model):
+    """
+        場所 : area
+    """
+    area = models.CharField("エリア",max_length=30)
+
+    def get_area(self):
+        return self.area
