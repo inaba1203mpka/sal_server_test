@@ -19,7 +19,7 @@ User = get_user_model() #Userモデルの取得
 
 
 # TOPページ
-class Top(generic.TemplateView):
+class Top(LoginRequiredMixin, generic.TemplateView):
     template_name = 'system/top.html'
 
 # ログイン系
