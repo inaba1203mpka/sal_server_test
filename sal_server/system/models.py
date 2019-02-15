@@ -167,10 +167,10 @@ class Facility(models.Model):
 
     """
     facility = models.CharField("施設名",max_length=30)
-    Area = models.ForeignKey('Area',on_delete=models.CASCADE)
+    Area = models.ManyToManyField('Area')
     address = models.CharField("住所",max_length=300)
     picture = models.CharField("画像",max_length=300)
-    room = models.ForeignKey('Room',on_delete=models.CASCADE)
+    room = models.ManyToManyField('Room')
 
     def get_facility(self):
         return self.facility
@@ -185,17 +185,18 @@ class Facility(models.Model):
         return self.area
 
     def get_room(self):
-        return seld.room
-
-
+        return self.room
 
 
 """ 部屋 """
-class Room(self):
+class Room(models.Model):
     """
         部屋名 : room
     """
     room = models.CharField("部屋名",max_length=30)
+
+    def get_room(self):
+        return self.room
 
 
 
