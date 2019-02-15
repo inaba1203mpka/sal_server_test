@@ -4,3 +4,7 @@
 
 Django-version : 2.1.5   
 Python-version : 3.7.0    
+
+### Adminサイト
+id : adminuser
+pass : root 
