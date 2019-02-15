@@ -112,3 +112,9 @@ class Reservation_create(generic.CreateView):
     template_name = 'system/reservation_create.html'
     form_class = ReservationForm
     success_url = "/"
+
+    #ここにメールの処理
+
+#class Reservation_list(generic.ListView) :
+    """ 予約一覧 """
+    
