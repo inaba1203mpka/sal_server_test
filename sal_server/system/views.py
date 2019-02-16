@@ -122,6 +122,7 @@ class Reservation_create(LoginRequiredMixin, generic.CreateView):
 
     #ここにメールの処理
 
+
 class Reservation_list(LoginRequiredMixin, generic.ListView) :
     """ 予約一覧 """
     model = Reservation

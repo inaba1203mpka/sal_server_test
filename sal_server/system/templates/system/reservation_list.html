@@ -11,19 +11,6 @@
     <dev class="row">
       <table>
       {% for reservation in reservations %}
-        <tr>
-          <td>{{ reservation.group }}</td>
-        </tr>
-        <tr>
-          <td>{{ reservation.facility }}</td>
-        </tr>
-        <tr>
-          <td>{{ reservation.date_select }}</td>
-        </tr>
-        <tr>
-          <td><a href="{% url 'sal_project:reservation_delete' reservation.id %}">削除</a></td>
-        </tr>
-        
       {% endfor %}
     </table>
     </dev>

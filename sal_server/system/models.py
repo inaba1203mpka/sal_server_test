@@ -124,7 +124,7 @@ class User(AbstractBaseUser, PermissionsMixin):
 """ 予約 """
 class Reservation(models.Model) : 
     """
-        登録ユーザー : user_id
+        登録ユーザー : owner_id
         姓 : last_name
         名 : first_name
         団体名 : group
@@ -139,7 +139,7 @@ class Reservation(models.Model) :
         予約日付 : date_select
         利用時間 : time_for
     """
-    user_id : models.ForeignKey('User', on_delete=models.SET_NULL, null=True)
+    owner_id : models.ForeignKey('User', on_delete=models.CASCADE,related_name='reservation_owner')
     last_name = models.CharField("姓",max_length=10)
     first_name = models.CharField("名",max_length=10)
     group = models.CharField("団体名",max_length=30)
