@@ -34,6 +34,7 @@ class Logout(LoginRequiredMixin, LogoutView):
     """ ログアウトページ """
     template_name = 'system/top.html'
 
+    login_url = "/login"
 
 # ユーザ登録系
 class UserCreate(generic.CreateView):
@@ -114,20 +115,23 @@ class Reservation_create(LoginRequiredMixin, generic.CreateView):
     template_name = 'system/reservation_create.html'
     form_class = ReservationForm
     success_url = "/"
+    login_url = "/login"
 
     #ログイン中のユーザのidを格納 -- まだ未完成
+    
     def form_valid(self, form):
-        form.instance.user_id = self.request.user.id
+        form.instance.owner_id = self.request.user
         return super(Reservation_create, self).form_valid(form)
-
+    
     #ここにメールの処理
 
 
 class Reservation_list(LoginRequiredMixin, generic.ListView) :
     """ 予約一覧 """
     model = Reservation
-    #queryset = Reservation.objects.filter(user_id = user)
+    #queryset = Reservation.objects.all()
     template_name = 'system/reservation_list.html'
     paginate_by = 5
+    login_url = "/login"
     
     

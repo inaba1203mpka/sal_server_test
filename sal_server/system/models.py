@@ -139,7 +139,7 @@ class Reservation(models.Model) :
         予約日付 : date_select
         利用時間 : time_for
     """
-    owner_id : models.ForeignKey('User', on_delete=models.CASCADE,related_name='reservation_owner')
+    owner_id = models.ForeignKey('User', on_delete=models.CASCADE)
     last_name = models.CharField("姓",max_length=10)
     first_name = models.CharField("名",max_length=10)
     group = models.CharField("団体名",max_length=30)
