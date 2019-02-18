@@ -117,8 +117,6 @@ class Reservation_create(LoginRequiredMixin, generic.CreateView):
     success_url = "/"
     login_url = "/login"
 
-    #ログイン中のユーザのidを格納 -- まだ未完成
-    
     def form_valid(self, form):
         form.instance.owner_id = self.request.user
         return super(Reservation_create, self).form_valid(form)
@@ -129,9 +127,11 @@ class Reservation_create(LoginRequiredMixin, generic.CreateView):
 class Reservation_list(LoginRequiredMixin, generic.ListView) :
     """ 予約一覧 """
     model = Reservation
-    #queryset = Reservation.objects.all()
     template_name = 'system/reservation_list.html'
     paginate_by = 5
     login_url = "/login"
+
+    def get_queryset(self):
+        return Reservation.objects.filter(owner_id=self.request.user)
     
     
