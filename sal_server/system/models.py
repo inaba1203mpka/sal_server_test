@@ -149,7 +149,7 @@ class Reservation(models.Model) :
     man_out = models.PositiveIntegerField("市内女性人数")
     woman_in = models.PositiveIntegerField("市外男性人数")
     woman_out = models.PositiveIntegerField("市外女性人数")
-    email = models.EmailField("メールアドレス",max_length = 200,unique=True)
+    email = models.EmailField("メールアドレス",max_length = 200)
     phone = models.PositiveIntegerField("電話番号")
     date_select = models.DateTimeField("日付")
     time_for = models.PositiveIntegerField("利用時間")

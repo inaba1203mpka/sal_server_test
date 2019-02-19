@@ -3,6 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import (
     LoginView, LogoutView
 )
+from django.contrib import messages  
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.signing import BadSignature, SignatureExpired, loads, dumps
 from django.http import Http404, HttpResponseBadRequest
@@ -119,6 +120,7 @@ class Reservation_create(LoginRequiredMixin, generic.CreateView):
 
     def form_valid(self, form):
         form.instance.owner_id = self.request.user
+        messages.success(self.request, "予約しました")
         return super(Reservation_create, self).form_valid(form)
     
     #ここにメールの処理
@@ -130,6 +132,7 @@ class Reservation_list(LoginRequiredMixin, generic.ListView) :
     template_name = 'system/reservation_list.html'
     paginate_by = 5
     login_url = "/login"
+    context_object_name = "my_reservations"
 
     def get_queryset(self):
         return Reservation.objects.filter(owner_id=self.request.user)
