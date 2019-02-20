@@ -1,0 +1,20 @@
+{% extends "system/base.html" %}
+
+{% block content %}
+
+  <div class="container">
+    <div class="row no-gutters">
+      <div class="col-4 offset-4">
+        <h1 class="my-3 text-center">施設検索</h1>
+      </div>
+    </div>
+    <dev class="row">
+      {% for f in facilities %}
+        {{ f.facility }}<br>
+        <a href="{% url 'system:reservation_create'  %}">予約する</a><br>
+        <hr>
+      {% endfor %}
+    </dev>
+  </div>
+
+{% endblock content %}

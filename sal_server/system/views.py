@@ -19,7 +19,7 @@ from .forms import (
 from django.contrib.auth import get_user_model
 User = get_user_model() #Userモデルの取得
 
-from .models import Reservation
+from .models import *
 from .forms import ReservationForm
 
 # TOPページ
@@ -153,6 +153,13 @@ class  Reservation_delete(LoginRequiredMixin, generic.DeleteView):
             self.request, '「{}」を削除しました'.format(self.object))
         return result
 
+
 #施設検索
-    
-    
+class Facility_list(LoginRequiredMixin, generic.ListView):
+    """ 施設一覧 """
+    model = Facility
+    template_name = 'system/Facility_list.html'
+    paginate_by = 5
+    login_url = "/login"
+    context_object_name = "facilities"
+
