@@ -13,8 +13,8 @@ urlpatterns = [
     path('user_create/', views.UserCreate.as_view(), name='user_create'),
     path('user_create/done', views.UserCreateDone.as_view(), name='user_create_done'),
     path('user_create/complete/<token>/', views.UserCreateComplete.as_view(), name='user_create_complete'),
-
     #予約系
     path('reservation_create/', views.Reservation_create.as_view(),name='reservation_create'),
     path('reservation_list/', views.Reservation_list.as_view(),name='reservation_list'),
+    path('<int:pk>/delete/',views.Reservation_delete.as_view(), name='reservation_delete'),
 ]

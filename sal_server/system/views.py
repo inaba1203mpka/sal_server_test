@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import (
     LoginView, LogoutView
@@ -136,5 +137,22 @@ class Reservation_list(LoginRequiredMixin, generic.ListView) :
 
     def get_queryset(self):
         return Reservation.objects.filter(owner_id=self.request.user)
+
+
+class  Reservation_delete(LoginRequiredMixin, generic.DeleteView):
+    """ 予約削除 """
+    model = Reservation
+    login_url = "/login"
+    form_class = ReservationForm
+
+    success_url = reverse_lazy('system:reservation_list')
+
+    def delete(self, request, *args, **kwargs):
+        result = super().delete(request, *args, **kwargs)
+        messages.success(
+            self.request, '「{}」を削除しました'.format(self.object))
+        return result
+
+#施設検索
     
     

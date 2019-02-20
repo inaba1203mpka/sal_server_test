@@ -10,7 +10,12 @@
     </div>
     <dev class="row">
       {% for r in my_reservations %}
-      {{ r.owner_id }}
+        {{ r.owner_id }}<br>
+        {{ r.date_select }}<br>
+        {{ r.facility }}
+        
+        <a href="{% url 'system:reservation_delete' r.pk %}">削除</a><br>
+        <hr>
       {% endfor %}
     </dev>
   </div>

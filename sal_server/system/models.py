@@ -153,7 +153,10 @@ class Reservation(models.Model) :
     phone = models.PositiveIntegerField("電話番号")
     date_select = models.DateTimeField("日付")
     time_for = models.PositiveIntegerField("利用時間")
-    
+    """
+    def get_people(self):
+        return self.man_in + self.man_out + self.woman_in + self.woman_out
+    """
 
 
 """ 施設 """
