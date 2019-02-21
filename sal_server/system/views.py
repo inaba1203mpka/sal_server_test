@@ -27,7 +27,6 @@ from .forms import ReservationForm
 from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-
 from rest_framework import status
 
 import random, string, qrcode, os
@@ -201,12 +200,25 @@ class Facility_list(LoginRequiredMixin, generic.ListView):
     context_object_name = "facilities"
 
 
-#ランダム文字列受け取り
+#ランダム文字列受け取り : http:~~/random_string?rdm_str="~~~"
 class Random_string(APIView):
-    def get(self, request):
-        if "query_param" in request.GET:
+    def get(self, request, format=None):
+        if "rdm_str" in request.GET:
             # query_paramが指定されている場合の処理
-            param_value = request.GET.get("query_param")
+            random_string = request.GET.get("rdm_str")
+            reservation = Reservation.objects.filter(rdm_str=random_string) 
+            now = datetime.datetime.now()
+            return Response({"Ans": "True"},status=status.HTTP_200_OK)
+            """
+            if reservation[0].date_select - datetime.timedelta(minutes=15) <= now or \
+                reservation[0].date_select + datetime.timedelta(hour=reservation[0].time_for) + datetime.timedelta(minutes=15) >= now :
+                # 今が 予約時間-15分以上　かつ 予約時間+利用時間+15分以下 のとき
+                return Response({"Ans": "True"},status=status.HTTP_200_OK)
+            else :
+                return Response({"Ans": "False"},status=status.HTTP_200_OK)
+            """
         else:
             # query_paramが指定されていない場合の処理
+            return Response({"Ans": "False"},status=status.HTTP_200_OK)
+
 

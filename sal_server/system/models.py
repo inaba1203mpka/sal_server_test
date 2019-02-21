@@ -153,7 +153,7 @@ class Reservation(models.Model) :
     email = models.EmailField("メールアドレス",max_length = 200)
     phone = models.PositiveIntegerField("電話番号")
     date_select = models.DateTimeField("日付-時間")
-    time_for = models.PositiveIntegerField("利用時間")
+    time_for = models.PositiveIntegerField("利用時間[時間]")
     rdm_str = models.CharField("ランダム文字列",max_length=640)
     """
     def get_people(self):
