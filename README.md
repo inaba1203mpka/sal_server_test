@@ -10,4 +10,5 @@ id : admin
 pass : root 
 
 ### import 
-random, string, qrcode, os
+random, string, qrcode, os  
+djangorestframework-3.9.1

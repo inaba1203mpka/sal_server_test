@@ -35,6 +35,7 @@ class UserCreateForm(UserCreationForm):
 
 class ReservationForm(forms.ModelForm):
     """予約フォーム"""
+    date_select = forms.SplitDateTimeField(label='日付-時間')
     class Meta :
         model = Reservation
         fields = ['last_name','first_name','group','facility','use_kind','man_in','woman_in','man_out','woman_out','email','phone','date_select','time_for']

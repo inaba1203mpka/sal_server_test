@@ -24,6 +24,12 @@ User = get_user_model() #Userモデルの取得
 from .models import *
 from .forms import ReservationForm
 
+from rest_framework.views import APIView
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+
+from rest_framework import status
+
 import random, string, qrcode, os
 
 # TOPページ
@@ -144,7 +150,7 @@ class Reservation_create(LoginRequiredMixin, generic.CreateView):
         qr_mail = EmailMessage(subject,message, from_email=from_email, to=recipient_list)
         qr_mail.attach("qr_code.png", "qr.png" , 'image/png')  #qr_code添付
         qr_mail.send()
-        os.remove("qr.png")
+        #os.remove("qr.png")
 
         #完了
         messages.success(self.request, "予約しました")
@@ -194,3 +200,14 @@ class Facility_list(LoginRequiredMixin, generic.ListView):
     login_url = "/login"
     context_object_name = "facilities"
 
+"""
+#ランダム文字列受け取り
+class Random_string(APIView):
+    def get(self, request):
+        if "query_param" in request.GET:
+            # query_paramが指定されている場合の処理
+            param_value = request.GET.get("query_param")
+        else:
+            # query_paramが指定されていない場合の処理
+
+"""
