@@ -137,9 +137,14 @@ class Reservation_list(LoginRequiredMixin, generic.ListView) :
     paginate_by = 5
     login_url = "/login"
     context_object_name = "my_reservations"
-
+    # フィルターをかける
     def get_queryset(self):
         return Reservation.objects.filter(owner_id=self.request.user)
+    # 別のモデルをを取得
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["username"] = User.objects.filter(id=self.request.user.id)[0]   # Userモデルからユーザネーム - 配列で受け取るので[0]
+        return context
 
 
 class  Reservation_delete(LoginRequiredMixin, generic.DeleteView):
