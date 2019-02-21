@@ -22,6 +22,8 @@ User = get_user_model() #Userモデルの取得
 from .models import *
 from .forms import ReservationForm
 
+import random, string
+
 # TOPページ
 class Top(LoginRequiredMixin, generic.TemplateView):
     template_name = 'system/top.html'
@@ -121,9 +123,10 @@ class Reservation_create(LoginRequiredMixin, generic.CreateView):
 
     def form_valid(self, form):
         form.instance.owner_id = self.request.user
+        form.instance.rdm_str = ''.join(random.choices(string.ascii_letters + string.digits, k=640))
         messages.success(self.request, "予約しました")
         return super(Reservation_create, self).form_valid(form)
-    
+
     #ここにメールの処理
 
 

@@ -138,6 +138,7 @@ class Reservation(models.Model) :
         電話番号 : phone
         予約日付 : date_select
         利用時間 : time_for
+        ランダム文字列 : rdm_str
     """
     owner_id = models.ForeignKey('User', on_delete=models.CASCADE)
     last_name = models.CharField("姓",max_length=10)
@@ -153,6 +154,7 @@ class Reservation(models.Model) :
     phone = models.PositiveIntegerField("電話番号")
     date_select = models.DateTimeField("日付")
     time_for = models.PositiveIntegerField("利用時間")
+    rdm_str = models.CharField("ランダム文字列",max_length=640)
     """
     def get_people(self):
         return self.man_in + self.man_out + self.woman_in + self.woman_out
@@ -174,21 +176,8 @@ class Facility(models.Model):
     address = models.CharField("住所",max_length=300)
     picture = models.CharField("画像",max_length=300)
     room = models.ManyToManyField('Room')
-
-    def get_facility(self):
+    def __str__(self):
         return self.facility
-
-    def get_address(self):
-        return self.address
-
-    def get_picture(self):
-        return self.picture
-
-    def get_area(self):
-        return self.area
-
-    def get_room(self):
-        return self.room
 
 
 """ 部屋 """
@@ -198,7 +187,7 @@ class Room(models.Model):
     """
     room = models.CharField("部屋名",max_length=30)
 
-    def get_room(self):
+    def __str__(self):
         return self.room
 
 
@@ -210,7 +199,7 @@ class UseKind(models.Model):
     """
     use = models.CharField("利用目的",max_length=50)
     
-    def get_use(self):
+    def __str__(self):
         return self.use
 
 
@@ -222,5 +211,6 @@ class Area(models.Model):
     """
     area = models.CharField("エリア",max_length=30)
 
-    def get_area(self):
+    def __str__(self):
         return self.area
+
