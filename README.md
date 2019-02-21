@@ -10,4 +10,4 @@ id : admin
 pass : root 
 
 ### import 
-random, string, qrcode
+random, string, qrcode, os

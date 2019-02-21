@@ -4,7 +4,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import (
     LoginView, LogoutView
 )
-from django.core.mail import BadHeaderError, send_mail
+from django.core.mail import EmailMessage
 from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages  
 from django.contrib.sites.shortcuts import get_current_site
@@ -24,11 +24,12 @@ User = get_user_model() #Userモデルの取得
 from .models import *
 from .forms import ReservationForm
 
-import random, string, qrcode
+import random, string, qrcode, os
 
 # TOPページ
 class Top(LoginRequiredMixin, generic.TemplateView):
     template_name = 'system/top.html'
+
 
 # ログイン系
 class Login(LoginView):
@@ -39,8 +40,8 @@ class Login(LoginView):
 class Logout(LoginRequiredMixin, LogoutView):
     """ ログアウトページ """
     template_name = 'system/top.html'
-
     login_url = "/login"
+
 
 # ユーザ登録系
 class UserCreate(generic.CreateView):
@@ -75,9 +76,11 @@ class UserCreate(generic.CreateView):
         user.email_user(subject, message)
         return redirect('system:user_create_done')
 
+
 class UserCreateDone(generic.TemplateView):
     """ユーザー仮登録したよ"""
     template_name = 'system/user_create_done.html'
+
 
 class UserCreateComplete(generic.TemplateView):
     """メール内URLアクセス後のユーザー本登録"""
@@ -126,18 +129,27 @@ class Reservation_create(LoginRequiredMixin, generic.CreateView):
     def form_valid(self, form):
         #入力欄にないフィールドを追加
         form.instance.owner_id = self.request.user
-        form.instance.rdm_str = ''.join(random.choices(string.ascii_letters + string.digits, k=640))
+        random_string = ''.join(random.choices(string.ascii_letters + string.digits, k=640))    #ランダム文字列生成
+        form.instance.rdm_str = random_string   
+        qr_code = qrcode.make( random_string )  #qr_code作成
+        qr_code.save("qr.png") 
+
         #メールの設定
         subject = "QRコード"    #題名
-        message = "予約していただきありがとうございます\n"  #タイトル
+        message = "予約していただきありがとうございます\nこのメールには返信できません"  #文章
         from_email = "webmaster@localhost"  #送信元メールアドレス
         recipient_list = [
             form.instance.email #宛先メールアドレス
         ]
-        send_mail(subject, message, from_email, recipient_list)
+        qr_mail = EmailMessage(subject,message, from_email=from_email, to=recipient_list)
+        qr_mail.attach("qr_code.png", "qr.png" , 'image/png')  #qr_code添付
+        qr_mail.send()
+        os.remove("qr.png")
+
         #完了
         messages.success(self.request, "予約しました")
         return super(Reservation_create, self).form_valid(form)
+
 
 class Reservation_list(LoginRequiredMixin, generic.ListView) :
     """ 予約一覧 """
