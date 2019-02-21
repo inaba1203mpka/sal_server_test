@@ -20,5 +20,5 @@ urlpatterns = [
     #施設検索系
     path('facility_list/', views.Facility_list.as_view(),name='facility_list'),
     #ランダム文字列受け取り
-    #path('random_string/', views.Random_string.as_view(),name='random_string'),
+    path('random_string/', views.Random_string.as_view(),name='random_string'),
 ]

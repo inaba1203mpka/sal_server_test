@@ -200,7 +200,7 @@ class Facility_list(LoginRequiredMixin, generic.ListView):
     login_url = "/login"
     context_object_name = "facilities"
 
-"""
+
 #ランダム文字列受け取り
 class Random_string(APIView):
     def get(self, request):
@@ -210,4 +210,3 @@ class Random_string(APIView):
         else:
             # query_paramが指定されていない場合の処理
 
-"""
