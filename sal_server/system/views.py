@@ -4,6 +4,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import (
     LoginView, LogoutView
 )
+from django.core.mail import BadHeaderError, send_mail
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages  
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.signing import BadSignature, SignatureExpired, loads, dumps
@@ -22,7 +24,7 @@ User = get_user_model() #Userモデルの取得
 from .models import *
 from .forms import ReservationForm
 
-import random, string
+import random, string, qrcode
 
 # TOPページ
 class Top(LoginRequiredMixin, generic.TemplateView):
@@ -122,13 +124,20 @@ class Reservation_create(LoginRequiredMixin, generic.CreateView):
     login_url = "/login"
 
     def form_valid(self, form):
+        #入力欄にないフィールドを追加
         form.instance.owner_id = self.request.user
         form.instance.rdm_str = ''.join(random.choices(string.ascii_letters + string.digits, k=640))
+        #メールの設定
+        subject = "QRコード"    #題名
+        message = "予約していただきありがとうございます\n"  #タイトル
+        from_email = "webmaster@localhost"  #送信元メールアドレス
+        recipient_list = [
+            form.instance.email #宛先メールアドレス
+        ]
+        send_mail(subject, message, from_email, recipient_list)
+        #完了
         messages.success(self.request, "予約しました")
         return super(Reservation_create, self).form_valid(form)
-
-    #ここにメールの処理
-
 
 class Reservation_list(LoginRequiredMixin, generic.ListView) :
     """ 予約一覧 """
@@ -137,9 +146,11 @@ class Reservation_list(LoginRequiredMixin, generic.ListView) :
     paginate_by = 5
     login_url = "/login"
     context_object_name = "my_reservations"
+
     # フィルターをかける
     def get_queryset(self):
         return Reservation.objects.filter(owner_id=self.request.user)
+
     # 別のモデルをを取得
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

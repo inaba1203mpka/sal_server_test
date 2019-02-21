@@ -8,3 +8,6 @@ Python-version : 3.7.0
 ### Adminサイト
 id : admin
 pass : root 
+
+### import 
+random, string, qrcode
