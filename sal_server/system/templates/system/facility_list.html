@@ -113,51 +113,7 @@
     {% endfor %}
   </div>
 </div>
-<!--
-        <div class="card-body">
-          <div class="row">
-            <div class="col-md-4" style="height:300px">
-              <img src="{{ f.picture }}" class="card-img mb-2">
-            </div>
-            <div class="col-8">
-              <div class="row">
-                <div class="col-12">
-                  <h2>施設説明</h2>
-                </div>
-                <div class="col-12">
-                  <p>・説明文</p>
-                </div>
-              </div>
-              <form　action="{% url 'system:reservation_create' %}" method="POST">
-                <div class="row">
-                  <div class="col-6 offset-3">
-                    <div class="form-group mb-4 mt-3">
-                      <label for="room">室名</label>
-                      <select class="custom-select" name="room">
-                        <option>浴室(男湯:~12名,女湯:~12名)</option>
-                        <option>健康相談室(~20名)</option>
-                        <option>健康増進室(~15名)</option>
-                        <option>交流室(~30名)</option>
-                        <option>多目的室(~40名)</option>
-                        <option>さざなみホール(~180名※座席:114席)</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="col-2 text-right mt-5">
-                    <button type="submit" class="btn btn-primary mb-3">予約</button>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-        <a href="{% url 'system:reservation_create'  %}">予約する</a><br>
-        <hr>
-       
-      </div>
-    </div>
-  </div>
--->
+
 
 
 {% endblock content %}
