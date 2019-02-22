@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'system',
     'rest_framework',
+    'stdimage',
 ]
 
 MIDDLEWARE = [
@@ -125,6 +126,10 @@ STATIC_URL = '/static/'
 
 
 #-- 追加 ---------------------------------------------------------------------------------
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR
+
 
 # 認証するユーザーモデル
 AUTH_USER_MODEL = 'system.User'

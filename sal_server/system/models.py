@@ -5,6 +5,7 @@ from django.contrib.auth.validators import UnicodeUsernameValidator
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from django.core.mail import send_mail
+from stdimage.models import StdImageField 
 
 
 class UserManager(BaseUserManager):
@@ -169,13 +170,20 @@ class Facility(models.Model):
         住所 : address
         画像id : picture
         部屋 : room
+        詳細 : info
 
     """
     facility = models.CharField("施設名",max_length=30)
     Area = models.ForeignKey('Area',on_delete=models.CASCADE)
     address = models.CharField("住所",max_length=300)
-    picture = models.CharField("画像",max_length=300)
     room = models.ManyToManyField('Room')
+    info = models.CharField("詳細",max_length=1000)
+    picture = StdImageField("画像",upload_to='media/', blank=True, variations={
+        'large': (600, 400),
+        'thumbnail': (100, 100, True),
+        'medium': (300, 200),
+    })
+
     def __str__(self):
         return self.facility
 
