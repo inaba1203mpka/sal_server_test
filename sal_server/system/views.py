@@ -207,7 +207,11 @@ class Random_string(APIView):
         if "rdm_str" in request.GET:
             # query_paramが指定されている場合の処理
             random_string = str(request.GET.get("rdm_str")) 
-            if random_string == Reservation.objects.filter(rdm_str=random_string)[0].rdm_str :
+            try :
+                Reservation.objects.filter(rdm_str=random_string)[0]
+            except IndexError: 
+                return Response({"Ans": "False_none"},status=status.HTTP_200_OK)
+            if random_string ==  Reservation.objects.filter(rdm_str=random_string)[0].rdm_str :
                 reservation = Reservation.objects.filter(rdm_str=random_string)[0] 
                 tz = pytz.timezone('Asia/Tokyo')
                 now_nozone = datetime.now()
