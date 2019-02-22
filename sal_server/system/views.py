@@ -29,7 +29,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
 
-import random, string, qrcode, os, datetime, pytz
+import random, string, qrcode, os, pytz
+from datetime import datetime, timedelta, timezone
 
 # TOPページ
 class Top(LoginRequiredMixin, generic.TemplateView):
@@ -205,15 +206,24 @@ class Random_string(APIView):
     def get(self, request, format=None):
         if "rdm_str" in request.GET:
             # query_paramが指定されている場合の処理
-            random_string = request.GET.get("rdm_str")
-            reservation = Reservation.objects.filter(rdm_str=random_string) 
-            now = pytz.ja.localize(now)
-            if reservation[0].date_select - datetime.timedelta(minutes=15) <= now or \
-                reservation[0].date_select + datetime.timedelta(hour=reservation[0].time_for) + datetime.timedelta(minutes=15) >= now :
-                # 今が 予約時間-15分以上　かつ 予約時間+利用時間+15分以下 のとき
-                return Response({"Ans": "True"},status=status.HTTP_200_OK)
-            else :
-                return Response({"Ans": "False_time"},status=status.HTTP_200_OK)
+            random_string = str(request.GET.get("rdm_str")) 
+            try :
+                Reservation.objects.filter(rdm_str=random_string)[0]
+            except IndexError: 
+                return Response({"Ans": "False_none"},status=status.HTTP_200_OK)
+            if random_string ==  Reservation.objects.filter(rdm_str=random_string)[0].rdm_str :
+                reservation = Reservation.objects.filter(rdm_str=random_string)[0] 
+                tz = pytz.timezone('Asia/Tokyo')
+                now_nozone = datetime.now()
+                now = tz.localize(now_nozone)
+                if reservation.date_select - timedelta(minutes=15) <= now and \
+                reservation.date_select + timedelta(hours=reservation.time_for) + timedelta(minutes=15) >= now :
+                    # 今が 予約時間-15分以上　かつ 予約時間+利用時間+15分以下 のとき
+                    return Response({"Ans": "True"},status=status.HTTP_200_OK)
+                else :
+                    return Response({"Ans": "False_time"},status=status.HTTP_200_OK)
+            else:
+                return Response({"Ans": "False_none"},status=status.HTTP_200_OK)
         else:
             # query_paramが指定されていない場合の処理
             return Response({"Ans": "False"},status=status.HTTP_200_OK)
