@@ -2,19 +2,99 @@
 
 {% block content %}
 
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-4 offset-md-4">
+      <h1 class="my-3 text-center">施設選択</h1>
+    </div>
+  </div>
   <div class="container">
-    <div class="row no-gutters">
-      <div class="col-4 offset-4">
-        <h1 class="my-3 text-center">施設検索</h1>
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <div class="card mb-5">
+          <div class="card-body">
+            <form>
+              <div class="row">
+                <div class="col-md-4">
+                  <div class="form-group mt-4 mb-4">
+                    <select class="custom-select custom-select-lg" name="purpose">
+                      <option selected>目的</option>
+                      <option>a</option>
+                      <option>b</option>
+                      <option>c</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group mt-4 mb-4">
+                    <select class="custom-select custom-select-lg" name="area">
+                      <option selected>場所</option>
+                      <option>a</option>
+                      <option>b</option>
+                      <option>c</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-2 mt-4 ml-auto">
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-lg">施設検索</button>
+                  </div>
+                </div>
+              </div>
+          </div>
+          </form>
+        </div>
       </div>
     </div>
-    <dev class="row">
-      {% for f in facilities %}
-        {{ f.facility }}<br>
+  </div>
+  <div class="row">
+    {% for f in facilities %}
+    <div class="col-md-10 offset-md-1">
+      <div class="card">
+        <div class="card-header">
+          <h3>{{ f.facility }}</h3>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-4" style="height:300px">
+              <img src="{{ f.picture }}" class="card-img mb-2">
+            </div>
+            <div class="col-8">
+              <div class="row">
+                <div class="col-12">
+                  <h2>施設説明</h2>
+                </div>
+                <div class="col-12">
+                  <p>・説明文</p>
+                </div>
+              </div>
+              <form　action="{% url 'system:reservation_create' %}" method="POST">
+                <div class="row">
+                  <div class="col-6 offset-3">
+                    <div class="form-group mb-4 mt-3">
+                      <label for="room">室名</label>
+                      <select class="custom-select" name="room">
+                        <option>浴室(男湯:~12名,女湯:~12名)</option>
+                        <option>健康相談室(~20名)</option>
+                        <option>健康増進室(~15名)</option>
+                        <option>交流室(~30名)</option>
+                        <option>多目的室(~40名)</option>
+                        <option>さざなみホール(~180名※座席:114席)</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-2 text-right mt-5">
+                    <button type="submit" class="btn btn-primary mb-3">予約</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
         <a href="{% url 'system:reservation_create'  %}">予約する</a><br>
         <hr>
-      {% endfor %}
-    </dev>
-  </div>
+        {% endfor %}
+      </div>
+    </div>
 
-{% endblock content %}
+    {% endblock content %}
