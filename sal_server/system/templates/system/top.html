@@ -1,7 +1,25 @@
 {% extends "system/base.html" %}
 {% block content %}
-<p>ここに、好きな内容を入れる。</p>
-<p>カレンダー</p>
+
+<div class="container">
+		<div class="row no-gutters">
+		  <div class="col-md-4 offset-md-4">
+			<h1 class="my-3 text-center">利用方法</h1>
+		  </div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="card">
+					{% load static %}
+					<img class="card-img-top" src="{% static 'system/no_image.jpg' %}">
+					<div class="card-body">
+						<div class="card-title">カードの見出し</div>
+						<h6 class="card-text">カードの内容</h6>
+					</div>
+				</div>
+			</div>
+		</div>
+</div>		
 
 <script>
 	$(document).ready(function () {
@@ -20,4 +38,5 @@
 		});
 	});
 </script>
+
 {% endblock %}
