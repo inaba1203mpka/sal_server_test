@@ -174,6 +174,7 @@ class Facility(models.Model):
 
     """
     facility = models.CharField("施設名",max_length=30)
+    #あとでなおす
     Area = models.ForeignKey('Area',on_delete=models.CASCADE)
     address = models.CharField("住所",max_length=300)
     room = models.ManyToManyField('Room')

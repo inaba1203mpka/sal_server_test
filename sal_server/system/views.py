@@ -196,19 +196,26 @@ class Facility_list(LoginRequiredMixin, generic.ListView):
     """ 施設一覧 """
     model = Facility
     template_name = 'system/Facility_list.html'
-    #paginate_by = 5
     login_url = "/login"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["facilities"] = self.model.objects.all()
+        #いらないかも
         context['use_kinds'] = UseKind.objects.all()
         context['areas'] = Area.objects.all()
         return context
 
     def get_queryset(self):
-        pass
-
+        object_list = self.model.objects.all()
+        #いらないかも
+        use_kind_filter = self.request.GET.get('purpose')
+        area_filter = self.request.GET.get("area")
+        #初期表示以外
+        if area_filter is not None :
+            area_filter_id = Area.objects.get(area=area_filter)
+            object_list = object_list.filter(Area_id=area_filter_id.id)
+        return object_list
 
 #ランダム文字列受け取り : http:~~/random_string?rdm_str="~~~"
 class Random_string(APIView):
