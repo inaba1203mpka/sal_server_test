@@ -59,7 +59,7 @@
         <div class="card-body">
           <div class="row">
 
-            <div class="col-md-4" style="height:300px">
+            <div class="col-md-4 mb-4">
               <img src="{{ f.picture.url }}" class="card-img mb-2">
             </div>
 
@@ -84,9 +84,10 @@
                 <div class="col-6">
                   <div class="form-group mb-4 mt-3">
                     <select class="custom-select" name="room">
-                      
-                      <option selected>部屋一覧</option>
-                      <option>{{ f.room }}</option>
+                        <option selected>部屋一覧</option>
+                      {% for r in f.room.all %}
+                      <option>{{ r }}</option>
+                      {% endfor %}
                      
                     </select>
                   </div>

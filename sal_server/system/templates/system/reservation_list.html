@@ -2,22 +2,54 @@
 
 {% block content %}
 
-  <div class="container">
-    <div class="row no-gutters">
-      <div class="col-4 offset-4">
-        <h1 class="my-3 text-center">{{username}}様の予約一覧</h1>
+<div class="container">
+  <div class="row no-gutters">
+    <div class="col-md-4 offset-md-4">
+      <h1 class="my-3 text-center">予約一覧</h1>
+    </div>
+  </div>
+  <div class="row">
+    {% for r in my_reservations %}
+    <div class="col-md-6 offset-md-3">
+      <div class="card">
+        <div class="card-body">
+          <div class="row">
+
+
+
+            <div class="col-12">
+              <h2>予約日時</h2>
+            </div>
+
+            <div class="col-12">
+              <h5>・{{ r.date_select }}</h5>
+            </div>
+            <div class="col-12">
+              <h2>場所</h2>
+              <h5>・{{ r.facility }}</h5>
+            </div>
+
+
+
+
+
+
+
+            <div class="col-md-6 mt-3 offset-md-3">
+
+              <form action="{% url 'system:reservation_delete' r.pk %}" method="POST">
+                <button type="submit" class="btn btn-success btn-block">削除</button>
+                {% csrf_token %}
+              </form>
+
+
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <dev class="row">
-      {% for r in my_reservations %}
-        {{ r.owner_id }}<br>
-        {{ r.date_select }}<br>
-        {{ r.facility }}
-        
-        <a href="{% url 'system:reservation_delete' r.pk %}">削除</a><br>
-        <hr>
-      {% endfor %}
-    </dev>
+    {% endfor %}
   </div>
+</div>
 
 {% endblock content %}
