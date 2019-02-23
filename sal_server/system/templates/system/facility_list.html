@@ -19,9 +19,9 @@
                   <div class="form-group mt-4 mb-4">
                     <select class="custom-select custom-select-lg" name="purpose">
                       <option selected>目的</option>
-                      <option>a</option>
-                      <option>b</option>
-                      <option>c</option>
+                      {% for u in use_kinds %}
+                      <option>{{ u.use }}</option>
+                      {% endfor %}
                     </select>
                   </div>
                 </div>
@@ -29,9 +29,9 @@
                   <div class="form-group mt-4 mb-4">
                     <select class="custom-select custom-select-lg" name="area">
                       <option selected>場所</option>
-                      <option>a</option>
-                      <option>b</option>
-                      <option>c</option>
+                      {% for a in areas %}
+                      <option>{{ a.area }}</option>
+                      {% endfor %}
                     </select>
                   </div>
                 </div>
