@@ -71,7 +71,7 @@
                 </div>
 
                 <div class="col-12" style="height:120px">
-                  <p>・説明文</p>
+                  <p>・{{ f.info }}</p>
                 </div>
                 <div class="col-12">
                   <h5>住所</h5>・{{ f.address }}
@@ -84,13 +84,10 @@
                 <div class="col-6">
                   <div class="form-group mb-4 mt-3">
                     <select class="custom-select" name="room">
+                      
                       <option selected>部屋一覧</option>
-                      <option>浴室(男湯:~12名,女湯:~12名)</option>
-                      <option>健康相談室(~20名)</option>
-                      <option>健康増進室(~15名)</option>
-                      <option>交流室(~30名)</option>
-                      <option>多目的室(~40名)</option>
-                      <option>さざなみホール(~180名※座席:114席)</option>
+                      <option>{{ f.room }}</option>
+                     
                     </select>
                   </div>
                 </div>
