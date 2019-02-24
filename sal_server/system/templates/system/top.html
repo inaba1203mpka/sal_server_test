@@ -2,38 +2,58 @@
 {% block content %}
 
 <div class="container">
-		<div class="row no-gutters">
-		  <div class="col-md-4 offset-md-4">
+	<div class="row no-gutters">
+		<div class="col-md-4 offset-md-4">
 			<h1 class="my-3 text-center">利用方法</h1>
-		  </div>
 		</div>
-		<div class="row">
-			<div class="col-md-4">
-				<div class="card">
-					{% load static %}
-					<img class="card-img-top" src="{% static 'system/no_image.jpg' %}">
-					<div class="card-body">
-						<div class="card-title">カードの見出し</div>
-						<h6 class="card-text">カードの内容</h6>
-					</div>
+	</div>
+	<div class="row">
+		<div class="col-md-4">
+			<a href="{% url 'system:facility_list' %}" class="card mb-4">
+				{% load static %}
+				<img class="card-img-top" src="{% static 'system/no_image.jpg' %}">
+				<div class="card-body">
+					<h3 class="card-title">施設選択</h3>
+					<h6 class="card-text">施設の一覧を確認することができます。</h6>
 				</div>
-			</div>
+			</a>
 		</div>
-</div>		
+		<div class="col-md-4">
+			<a href="{% url 'system:reservation_create' %}" class="card mb-4">
+				{% load static %}
+				<img class="card-img-top" src="{% static 'system/no_image.jpg' %}">
+				<div class="card-body">
+					<h3 class="card-title">予約</h3>
+					<h6 class="card-text">各種項目をご入力して頂き、施設の予約を行うことができます。</h6>
+				</div>
+			</a>
+		</div>
+		<div class="col-md-4">
+			<a href="{% url 'system:reservation_list' %}" class="card mb-4">
+				{% load static %}
+				<img class="card-img-top" src="{% static 'system/no_image.jpg' %}">
+				<div class="card-body">
+					<h3 class="card-title">予約一覧</h3>
+					<h6 class="card-text">予約情報の確認、削除を行うことができます。</h6>
+				</div>
+			</a>
+		</div>
+	</div>
+</div>
 
 <script>
 	$(document).ready(function () {
 		$('#calendar').fullCalendar({
 			events: [
-       	{
-         		title: '会議',
-         		start: '2018-09-01'
-       		},
-       		{
-         		title:'フェスティバル',
-         		start:'2018-09-20',
-         		end:'2018-09-22'
-       		 }
+				{
+					title: '会議',
+					start: '2018-09-01'
+				},
+				{
+					title: 'フェスティバル',
+					start: '2018-09-20',
+					end: '2018-09-22'
+				}
 			]
 		});
 	});
