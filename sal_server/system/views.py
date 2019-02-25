@@ -171,6 +171,19 @@ class Reservation_create(LoginRequiredMixin, generic.CreateView):
         return super(Reservation_create, self).form_valid(form)
 
 
+    
+
+    #フォームの初期値設定
+    def get_initial(self):
+        initial = super().get_initial()
+        user = User.objects.get(id=self.request.user.id)
+        initial["last_name"] = user.last_name
+        initial["first_name"] = user.first_name
+        initial["email"] = user.email
+        initial["phone"] = user.phone
+        return initial
+
+
 class Reservation_list(LoginRequiredMixin, generic.ListView) :
     """ 予約一覧 """
     model = Reservation
@@ -183,9 +196,9 @@ class Reservation_list(LoginRequiredMixin, generic.ListView) :
     def get_queryset(self):
         return Reservation.objects.filter(owner_id=self.request.user)
 
+    # 別のモデルを取得
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # 別のモデルを取得
         context["username"] = User.objects.filter(id=self.request.user.id)[0]   # Userモデルからユーザネーム - 配列で受け取るので[0]
         return context
 
