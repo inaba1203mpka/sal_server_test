@@ -36,12 +36,20 @@ from datetime import datetime, timedelta, timezone
 class Top(LoginRequiredMixin, generic.TemplateView):
     template_name = 'system/top.html'
 
-    """
-    # 予約時刻の整形
-        context["date"] = Reservation.objects.filter(owner_id=self.request.user.id)
-        context["date"] = context["date"].date_select.all()
-    """
-
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        # 予約時間の整形 yyyy-mm-dd
+        try :
+            reservation = Reservation.objects.filter(owner_id=self.request.user)
+            reservation_list = []
+            for r in reservation:
+                date = str(r.date_select.date())
+                facility = str(r.facility())
+                reservation_list.append(date+":"+facility)
+            context["reservation_date"] = reservation_list
+        except IndexError: 
+            context["reservation_date"] = [""]
+        return context
 
 # ログイン系
 class Login(LoginView):
@@ -175,10 +183,9 @@ class Reservation_list(LoginRequiredMixin, generic.ListView) :
     def get_queryset(self):
         return Reservation.objects.filter(owner_id=self.request.user)
 
-    # 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # 別のモデルをを取得
+        # 別のモデルを取得
         context["username"] = User.objects.filter(id=self.request.user.id)[0]   # Userモデルからユーザネーム - 配列で受け取るので[0]
         return context
 

@@ -38,22 +38,8 @@
     			crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/locale/ja.js" 
     			integrity="sha384-3g00X8X6uNpt0mkFtoyT5J25ASNVc++QIeHgCWwdjDSF/Rf9txoUv+9bUgQ6tHdu" 
-    			crossorigin="anonymous"></script>
-    <script>
-	$(document).ready(function () {
-		$('#calendar').fullCalendar({
-			events: [
-				{% for r in my_reservations %}
-        
-				{
-					title:'{{ r.facility }}',
+          crossorigin="anonymous"></script>
           
-				},
-				{% endfor %}
-			]
-		});
-	});
-</script>
     {% block script %}{% endblock %}
 
     

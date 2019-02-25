@@ -1,4 +1,23 @@
 {% extends "system/base.html" %}
+
+{% block script %}
+<script>
+	$(document).ready(function () {
+		$('#calendar').fullCalendar({
+			events: [
+				{% for r in reservation_date %}      
+				{
+					start:"{{ r }}",
+					end:"{{ r }}",
+					title:"{{ r }}",
+				},
+				{% endfor %}
+			]
+		});
+	});
+</script>
+{% endblock %}
+
 {% block content %}
 
 <div class="container">
