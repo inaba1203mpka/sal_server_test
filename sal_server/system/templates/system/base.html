@@ -1,6 +1,8 @@
 <!DOCTYPE>
 <html lang="ja">
 <head>
+
+    {% load static %}
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -39,6 +41,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/locale/ja.js" 
     			integrity="sha384-3g00X8X6uNpt0mkFtoyT5J25ASNVc++QIeHgCWwdjDSF/Rf9txoUv+9bUgQ6tHdu" 
           crossorigin="anonymous"></script>
+
+    <!--datetimepicker -->
+    <!--CSS-->
+    <link href="{% static 'bootstrap_datepicker_plus/css/datepicker-widget.css' %}" type="text/css" media="all" rel="stylesheet">
+
+    <!--JS-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="{% static 'bootstrap_datepicker_plus/js/datepicker-widget.js' %}"></script> 
           
     {% block script %}{% endblock %}
 
