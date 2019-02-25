@@ -23,10 +23,5 @@ urlpatterns = [
     path('facility_list/', views.Facility_list.as_view(),name='facility_list'),
     #ランダム文字列受け取り
     path('random_string/', views.Random_string.as_view(),name='random_string'),
-    #画像表示
-    #re_path(r'^media/(?P<path>.*)$','django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
 ]
-"""
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-"""
+

@@ -208,10 +208,10 @@ class Facility_list(LoginRequiredMixin, generic.ListView):
 
     def get_queryset(self):
         object_list = self.model.objects.all()
-        #いらないかも
-        use_kind_filter = self.request.GET.get('purpose')
+        # いらないかも
+        # use_kind_filter = self.request.GET.get('purpose')
         area_filter = self.request.GET.get("area")
-        #初期表示以外
+        # 初期表示以外
         if area_filter is not None :
             area_filter_id = Area.objects.get(area=area_filter)
             object_list = object_list.filter(Area_id=area_filter_id.id)
