@@ -2,176 +2,195 @@
 
 {% block content %}
 <div class="container">
-    <div class="row no-gutters">
-        <div class="col-md-4 offset-md-4">
-            <h1 class="my-3 text-center">予約情報入力</h1>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <div class="card">
-                <div class="card-body">
+	<div class="row no-gutters">
+		<div class="col-md-4 offset-md-4">
+			<h1 class="my-3 text-center">予約情報入力</h1>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-8 offset-md-2">
+			<div class="card">
+				<div class="card-body">
 
-                    <form action="" method="POST">
+					<form action="" method="POST">
 
-                        {{ form.non_field_errors }}
-                        {% for field in form %}
+						{{ form.non_field_errors }}
+						{% for field in form %}
 
-                        {% ifequal forloop.counter0 0 %}
+						{% ifequal forloop.counter0 0 %}
 
-                        <!-- 姓 -->
-                        <div class="form-group row">
-                            <div class="col-md-6 mt-2">
-                                <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
-                                {{ field }}
-                                {{ field.errors }}
-                            </div>
+						<!-- 姓 -->
+						<div class="form-group row">
+							<div class="col-md-6 mt-2">
+								<label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
+								{{ field }}
+								{{ field.errors }}
+							</div>
 
-                            {% endifequal %}
-
-
-                            <!-- 名 -->
-                            {% ifequal forloop.counter0 1 %}
-                            <div class="col-md-6 mt-2">
-                                <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
-                                {{ field }}
-                                {{ field.errors }}
-                            </div>
-                        </div>
-                        {% endifequal %}
-
-                        <!-- 団体名 -->
-
-                        {% ifequal forloop.counter0 2 %}
-                        <div class="form-group row">
-                            <div class="col-md-6 mt-2">
-                                <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
-                                {{ field }}
-                                {{ field.errors }}
-                            </div>
-                        </div>
-                        {% endifequal %}
-
-                        <!-- 施設 -->
-
-                        {% ifequal forloop.counter0 3 %}
-                        <div class="form-group row">
-                            <div class="col-md-6 mt-2">
-                                <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
-                                {{ field }}
-                                {{ field.errors }}
-                            </div>
-                            {% endifequal %}
-
-                            <!-- 目的 -->
-                            {% ifequal forloop.counter0 4 %}
-                            <div class="col-md-6 mt-2">
-                                <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
-                                {{ field }}
-                                {{ field.errors }}
-                            </div>
-                        </div>
-                        {% endifequal %}
-
-                        <!-- 市内男性人数 -->
-                        {% ifequal forloop.counter0 5 %}
-                        <div class="form-group row">
-                            <div class="col-md-6 mt-2">
-                                <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
-                                {{ field }}
-                                {{ field.errors }}
-                            </div>
-                            {% endifequal %}
-
-                            <!-- 市内女性人数 -->
-                            {% ifequal forloop.counter0 6 %}
-                            <div class="col-md-6 mt-2">
-                                <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
-                                {{ field }}
-                                {{ field.errors }}
-                            </div>
-                        </div>
-                        {% endifequal %}
-
-                        <!-- 市外男性人数 -->
-                        {% ifequal forloop.counter0 7 %}
-                        <div class="form-group row">
-                            <div class="col-md-6 mt-2">
-                                <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
-                                {{ field }}
-                                {{ field.errors }}
-                            </div>
-                            {% endifequal %}
-
-                            <!-- 市外女性人数 -->
-                            {% ifequal forloop.counter0 8 %}
-                            <div class="col-md-6 mt-2">
-                                <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
-                                {{ field }}
-                                {{ field.errors }}
-                            </div>
-                        </div>
-                        {% endifequal %}
-
-                        <!-- メールアドレス -->
-                        {% ifequal forloop.counter0 9 %}
-                        <div class="form-group row">
-                            <div class="col-md-12 mt-2">
-                                <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
-                                {{ field }}
-                                {{ field.errors }}
-                            </div>
-                        </div>
-                        {% endifequal %}
-
-                        <!-- 電話番号 -->
-                        {% ifequal forloop.counter0 10 %}
-                        <div class="form-group row">
-                            <div class="col-md-6 mt-2">
-                                <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
-                                {{ field }}
-                                {{ field.errors }}
-                            </div>
-                        </div>
-                        {% endifequal %}
-
-                        <!-- 日付-時間 -->
-                        {% ifequal forloop.counter0 11%}
-                        <div class="form-group row">
-                            <div class="col-md-6 mt-2">
-                                <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
-                                {{ field }}
-                                {{ field.errors }}
-                            </div>
-                        </div>
-                        <script type="text/javascript">
-                            $(function () {
-                                $('#id_date_select').datetimepicker();
-                            });
-                        </script>
-                        {% endifequal %}
-
-                        <!-- 利用時間 -->
-                        {% ifequal forloop.counter0 12 %}
-                        <div class="form-group row">
-                            <div class="col-md-6 mt-2">
-                                <label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
-                                {{ field }}
-                                {{ field.errors }}
-                            </div>
-                        </div>
-                        {% endifequal %}
+							{% endifequal %}
 
 
+							<!-- 名 -->
+							{% ifequal forloop.counter0 1 %}
+							<div class="col-md-6 mt-2">
+								<label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
+								{{ field }}
+								{{ field.errors }}
+							</div>
+						</div>
+						{% endifequal %}
 
-                        {% endfor %}
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-success btn-block btn-lg my-5">送信</button>
+						<!-- 団体名 -->
 
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+						{% ifequal forloop.counter0 2 %}
+						<div class="form-group row">
+							<div class="col-md-6 mt-2">
+								<label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
+								{{ field }}
+								{{ field.errors }}
+							</div>
+						</div>
+						{% endifequal %}
+
+						<!-- 施設 -->
+
+						{% ifequal forloop.counter0 3 %}
+						<div class="form-group row">
+							<div class="col-md-6 mt-2">
+								<label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
+								{{ field }}
+								{{ field.errors }}
+							</div>
+							{% endifequal %}
+
+							<!-- 目的 -->
+							{% ifequal forloop.counter0 4 %}
+							<div class="col-md-6 mt-2">
+								<label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
+								{{ field }}
+								{{ field.errors }}
+							</div>
+						</div>
+						{% endifequal %}
+
+						<!-- 市内男性人数 -->
+						{% ifequal forloop.counter0 5 %}
+						<div class="form-group row">
+							<div class="col-md-6 mt-2">
+								<label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
+								{{ field }}
+								{{ field.errors }}
+							</div>
+							{% endifequal %}
+
+							<!-- 市内女性人数 -->
+							{% ifequal forloop.counter0 6 %}
+							<div class="col-md-6 mt-2">
+								<label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
+								{{ field }}
+								{{ field.errors }}
+							</div>
+						</div>
+						{% endifequal %}
+
+						<!-- 市外男性人数 -->
+						{% ifequal forloop.counter0 7 %}
+						<div class="form-group row">
+							<div class="col-md-6 mt-2">
+								<label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
+								{{ field }}
+								{{ field.errors }}
+							</div>
+							{% endifequal %}
+
+							<!-- 市外女性人数 -->
+							{% ifequal forloop.counter0 8 %}
+							<div class="col-md-6 mt-2">
+								<label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
+								{{ field }}
+								{{ field.errors }}
+							</div>
+						</div>
+						{% endifequal %}
+
+						<!-- メールアドレス -->
+						{% ifequal forloop.counter0 9 %}
+						<div class="form-group row">
+							<div class="col-md-12 mt-2">
+								<label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
+								{{ field }}
+								{{ field.errors }}
+							</div>
+						</div>
+						{% endifequal %}
+
+						<!-- 電話番号 -->
+						{% ifequal forloop.counter0 10 %}
+						<div class="form-group row">
+							<div class="col-md-6 mt-2">
+								<label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
+								{{ field }}
+								{{ field.errors }}
+							</div>
+						</div>
+						{% endifequal %}
+
+						<!-- 日付-時間 -->
+						{% ifequal forloop.counter0 11%}
+						<div class="form-group row">
+							<div class="col-md-6 mt-2">
+								<label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
+								{{ field }}
+								{{ field.errors }}
+							</div>
+						</div>
+
+						<style type="text/css">
+						.datepicker-days th.dow:first-child,
+						.datepicker-days td:first-child {
+							color: #f00;
+						}
+						.datepicker-days th.dow:last-child,
+						.datepicker-days td:last-child {
+							color: #00f;
+						}
+
+						</style>
+						<script type="text/javascript">
+							$(function () {
+								$('#id_date_select').datetimepicker({
+									dayViewHeaderFormat: 'YYYY年MM月',
+									format: 'YYYY-MM-DD HH:mm',
+									locale: moment.locale('ja', {
+    									week: { dow: 1 }
+									}),
+									showClose: true,
+								});
+							});
+						</script>
+						{% endifequal %}
+
+						<!-- 利用時間 -->
+						{% ifequal forloop.counter0 12 %}
+						<div class="form-group row">
+							<div class="col-md-6 mt-2">
+								<label for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
+								{{ field }}
+								{{ field.errors }}
+							</div>
+						</div>
+						{% endifequal %}
+
+
+
+						{% endfor %}
+						{% csrf_token %}
+						<button type="submit" class="btn btn-success btn-block btn-lg my-5">送信</button>
+
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 {% endblock %}
