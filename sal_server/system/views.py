@@ -169,10 +169,14 @@ class Reservation_list(LoginRequiredMixin, generic.ListView) :
     def get_queryset(self):
         return Reservation.objects.filter(owner_id=self.request.user)
 
-    # 別のモデルをを取得
+    # 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        # 別のモデルをを取得
         context["username"] = User.objects.filter(id=self.request.user.id)[0]   # Userモデルからユーザネーム - 配列で受け取るので[0]
+        # 予約時刻の整形
+        context["data"] = Reservation.objects.filter(owner_id=self.request.user)
+        context["data"] = context["data"].date_select
         return context
 
 

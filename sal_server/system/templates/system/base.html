@@ -44,11 +44,8 @@
 		$('#calendar').fullCalendar({
 			events: [
 				{% for r in my_reservations %}
-				var str = '・{{ r.date_select }}';
-				var result = str.replace( '年' '月' '日' , '-')
 				{
 					title:'・{{ r.facility }}',
-					start: 'result'
 				},
 				{% endfor %}
 			]
@@ -103,6 +100,8 @@
       <div class="container mt-3">
           {% block content %}{% endblock %}
       </div>
+
+      
   
 </body>
 </html>
