@@ -8,7 +8,10 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.css"
+	 		integrity="sha384-CSpejLAxvQjhYnaGctk31dTIAVVJ37ll9TXZ5+siSJ/ZYHLO6/Ae3wBxMkkeePta" crossorigin="anonymous">
+	<link rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.print.css"
+			integrity="sha384-z97gwhg6eih9y0LEKeeKhp3kzktXuksd8JpECb6SWwru2UVRSD3KgsyEAwCXzTb1"crossorigin="anonymous" media='print' >
     <title>会員登録サンプル</title>
     
 </head>
@@ -24,13 +27,24 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
             integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
             crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.css"
-    			integrity="sha384-CSpejLAxvQjhYnaGctk31dTIAVVJ37ll9TXZ5+siSJ/ZYHLO6/Ae3wBxMkkeePta"
-    			 crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.print.css"
-    			integrity="sha384-z97gwhg6eih9y0LEKeeKhp3kzktXuksd8JpECb6SWwru2UVRSD3KgsyEAwCXzTb1"
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js" 
+    			integrity="sha384-tMry5U11FUSp/GAwrcT5eBnH0jsu6qedzOXY3Y2YKBn0C5t6Y385r1Ek4CWDjbvC" 
     			crossorigin="anonymous"></script>
-    			
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" 
+    			integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" 
+    			crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.js"
+    			integrity="sha384-gyVAognIf5iCcX71QjZsjnNfQ074SU+gjJnQ16dCmmeSnoVglijgfmICPJlShL7c"
+    			crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/locale/ja.js" 
+    			integrity="sha384-3g00X8X6uNpt0mkFtoyT5J25ASNVc++QIeHgCWwdjDSF/Rf9txoUv+9bUgQ6tHdu" 
+    			crossorigin="anonymous"></script>
+    <script>
+	$(document).ready(function () {
+		$('#calendar').fullCalendar({
+		});
+	});
+</script>
     {% block script %}{% endblock %}
 
     
