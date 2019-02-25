@@ -51,7 +51,7 @@ class ReservationForm(forms.ModelForm):
             'woman_out': forms.NumberInput(attrs={'placeholder':'数値を入力してください'}),
             'email': forms.TextInput(attrs={'placeholder':'例：minamiboso@example.com'}),
             'phone': forms.NumberInput(attrs={'placeholder':'例：0001111222'}),
-            'date_select': forms.NumberInput(attrs={'placeholder':'例：2000-1-1'}),
+            'date_select_0': forms.NumberInput(attrs={'placeholder':'例：2000-1-1'}),
             'time_for': forms.NumberInput(attrs={'placeholder':'例：1'})
 
         }

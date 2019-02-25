@@ -12,8 +12,20 @@
     {% for r in my_reservations %}
     <div class="col-md-6 offset-md-3">
       <div class="card mb-4">
+        <div class="card-header text-center">
+          <h2>{{ r.group }}</h2>
+        </div>
         <div class="card-body">
           <div class="row">
+            {% for f in facilities %}
+            {% ifequal f.facility r.facility %}
+            
+              <div class="col-md-12 mb-4">
+                <img src="{{ f.picture.url }}" class="card-img mb-2">
+              </div>
+            
+            {% endifequal %}
+            {% endfor %}
 
 
 
