@@ -4,15 +4,17 @@
 <script>
 	$(document).ready(function () {
 		$('#calendar').fullCalendar({
-			events: [
-				{% for r in reservation_date %}      
+			timezone: 'Asia/Tokyo', 
+			events : function(timezone){
+				{% for k,v in reservation_date.items %}      
 				{
-					start:"{{ r }}",
-					end:"{{ r }}",
-					title:"{{ r }}",
+					start:"{{ k }}",
+					end:"{{ k }}",
+					title:"{{ v.f }}/{{ v.t }}~{{ v.e }}",
+					color: '#5bc0de'
 				},
 				{% endfor %}
-			]
+			}
 		});
 	});
 </script>

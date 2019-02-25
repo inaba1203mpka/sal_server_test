@@ -41,14 +41,25 @@ class Top(LoginRequiredMixin, generic.TemplateView):
         # 予約時間の整形 yyyy-mm-dd
         try :
             reservation = Reservation.objects.filter(owner_id=self.request.user)
-            reservation_list = []
+            reservation_dict = {}
             for r in reservation:
-                date = str(r.date_select.date())
-                facility = str(r.facility())
-                reservation_list.append(date+":"+facility)
-            context["reservation_date"] = reservation_list
+                #日本時間 utc+9
+                j_t = r.date_select + timedelta(hours=9)
+                # 30時間表記
+                if j_t.hour + r.time_for < 10:
+                    e_h = "0" + str(j_t.hour + r.time_for)
+                else :
+                    e_h = str(j_t.hour + r.time_for)
+                if j_t.minute < 10 :
+                    e_m = "0" + str(j_t.minute)
+                else :
+                    str(j_t.minute)
+                e_t = e_h + ":" + e_m   
+                end_time = j_t + timedelta(hours=r.time_for)
+                reservation_dict[str(j_t.date())] = {"f":str(r.facility),"t":str(j_t.strftime("%H:%M")),"e":e_t}
+            context["reservation_date"] = reservation_dict
         except IndexError: 
-            context["reservation_date"] = [""]
+            context["reservation_date"] = {"":"","":""}
         return context
 
 # ログイン系
