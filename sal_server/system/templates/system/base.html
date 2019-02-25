@@ -44,10 +44,13 @@
 		$('#calendar').fullCalendar({
 			events: [
 				{% for r in my_reservations %}
+        {% for d in date %}
 				{
-					title:'・{{ r.facility }}',
+					title:'{{ r.facility }}',
+          start:'{{ d }}'
 				},
 				{% endfor %}
+        {% endfor %}
 			]
 		});
 	});
