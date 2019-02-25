@@ -42,6 +42,16 @@
     <script>
 	$(document).ready(function () {
 		$('#calendar').fullCalendar({
+			events: [
+				{% for r in my_reservations %}
+				var str = '・{{ r.date_select }}';
+				var result = str.replace( '年' '月' '日' , '-')
+				{
+					title:'・{{ r.facility }}',
+					start: 'result'
+				},
+				{% endfor %}
+			]
 		});
 	});
 </script>
