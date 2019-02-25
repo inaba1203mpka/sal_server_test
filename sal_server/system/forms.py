@@ -39,7 +39,23 @@ class ReservationForm(forms.ModelForm):
     class Meta :
         model = Reservation
         fields = ['last_name','first_name','group','facility','use_kind','man_in','woman_in','man_out','woman_out','email','phone','date_select','time_for']
-    #Bootstrap用
+        widgets = {
+            'last_name': forms.TextInput(attrs={'placeholder':'例：富浦'}),
+            'first_name': forms.TextInput(attrs={'placeholder':'例：太郎'}),
+            'group': forms.TextInput(attrs={'placeholder':'例：チーム○○'}),
+            #'facility': forms.SelectMultiple(attrs={'placeholder':'選択してください'}),
+            #'use_kind': forms.SelectMultiple(attrs={'placeholder':'選択してください'}),
+            'man_in': forms.NumberInput(attrs={'placeholder':'数値を入力してください'}),
+            'woman_in': forms.NumberInput(attrs={'placeholder':'数値を入力してください'}),
+            'man_out': forms.NumberInput(attrs={'placeholder':'数値を入力してください'}),
+            'woman_out': forms.NumberInput(attrs={'placeholder':'数値を入力してください'}),
+            'email': forms.TextInput(attrs={'placeholder':'例：minamiboso@example.com'}),
+            'phone': forms.NumberInput(attrs={'placeholder':'例：0001111222'}),
+            'date_select': forms.NumberInput(attrs={'placeholder':'例：2000-1-1'}),
+            'time_for': forms.NumberInput(attrs={'placeholder':'例：1'})
+
+        }
+    #Bootstrap
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         for field in self.fields.values():

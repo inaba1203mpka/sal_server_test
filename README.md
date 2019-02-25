@@ -13,3 +13,4 @@ pass : root
 random, string, qrcode, os, pillow, pytz    
 djangorestframework-3.9.1 (pip3)  
 django-stdimage (pip3)
+django-bootstrap-datepicker-plus(pip3)
