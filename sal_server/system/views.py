@@ -30,6 +30,7 @@ from rest_framework.response import Response
 from rest_framework import status
 
 import random, string, qrcode, os, pytz
+from pathlib import Path
 from datetime import datetime, timedelta, timezone
 
 # TOPページ
@@ -176,7 +177,9 @@ class Reservation_create(LoginRequiredMixin, generic.CreateView):
         ]
         qr_mail = EmailMessage(subject,message, from_email=from_email, to=recipient_list)
         #qr_mail.attach("qr_code.png", qrcode , 'image/png')  #qr_code添付
-        qr_mail.attach_file('./../qr_code.png')
+        p = Path('.')
+        p = Path('..'/"qr_code/png")
+        qr_mail.attach_file(p)
         qr_mail.send()
         #os.remove("qr.png")
 
