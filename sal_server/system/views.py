@@ -177,8 +177,8 @@ class Reservation_create(LoginRequiredMixin, generic.CreateView):
         ]
         qr_mail = EmailMessage(subject,message, from_email=from_email, to=recipient_list)
         #qr_mail.attach("qr_code.png", qrcode , 'image/png')  #qr_code添付
-        p = Path('..'/"qr_code.png")
-        qr_mail.attach_file(p)
+        p = os.chdir('../')
+        qr_mail.attach_file(os.path.basename('qr_code.png'))
         qr_mail.send()
         #os.remove("qr.png")
 
