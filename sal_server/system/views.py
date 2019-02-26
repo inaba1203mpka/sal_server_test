@@ -170,12 +170,12 @@ class Reservation_create(LoginRequiredMixin, generic.CreateView):
         #メールの設定
         subject = "QRコード"    #題名
         message = "予約していただきありがとうございます\nこのメールには返信できません"  #文章
-        from_email = "webmaster@localhost"  #送信元メールアドレス
+        from_email = "sdv2018b@www.ngw.net.it-chiba.ac.jp"  #送信元メールアドレス
         recipient_list = [
             form.instance.email #宛先メールアドレス
         ]
         qr_mail = EmailMessage(subject,message, from_email=from_email, to=recipient_list)
-        qr_mail.attach("qr_code.png", "qr.png" , 'image/png')  #qr_code添付
+        qr_mail.attach("qr_code.png", qrcode , 'image/png')  #qr_code添付
         qr_mail.send()
         #os.remove("qr.png")
 
