@@ -91,6 +91,7 @@ class UserCreate(generic.CreateView):
         # アクティベーションURLの送付
         current_site = get_current_site(self.request)
         domain = current_site.domain
+        print(domain)
         context = {
             'protocol': self.request.scheme,
             'domain': domain,
