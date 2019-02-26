@@ -53,7 +53,7 @@ class Top(LoginRequiredMixin, generic.TemplateView):
                 if j_t.minute < 10 :
                     e_m = "0" + str(j_t.minute)
                 else :
-                    str(j_t.minute)
+                    e_m = str(j_t.minute)
                 e_t = e_h + ":" + e_m   
                 end_time = j_t + timedelta(hours=r.time_for)
                 reservation_dict[str(j_t.date())] = {"f":str(r.facility),"t":str(j_t.strftime("%H:%M")),"e":e_t}

@@ -4,19 +4,25 @@
 <script>
 	$(document).ready(function () {
 		$('#calendar').fullCalendar({
-			timezone: 'Asia/Tokyo', 
-			events : function(timezone){
+			timezone : "Asia/Tokyo",
+			events:[
 				{% for k,v in reservation_date.items %}      
 				{
 					start:"{{ k }}",
 					end:"{{ k }}",
 					title:"{{ v.f }}/{{ v.t }}~{{ v.e }}",
-					color: '#5bc0de'
+					color: '#5bc0de',
+					
 				},
 				{% endfor %}
-			}
+			]
 		});
 	});
+</script>
+<script>
+	.fc-events{
+		height: 2px;
+	}
 </script>
 {% endblock %}
 
