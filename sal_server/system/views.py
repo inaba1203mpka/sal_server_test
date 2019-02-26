@@ -175,7 +175,8 @@ class Reservation_create(LoginRequiredMixin, generic.CreateView):
             form.instance.email #宛先メールアドレス
         ]
         qr_mail = EmailMessage(subject,message, from_email=from_email, to=recipient_list)
-        qr_mail.attach("qr_code.png", qrcode , 'image/png')  #qr_code添付
+        #qr_mail.attach("qr_code.png", qrcode , 'image/png')  #qr_code添付
+        qr_mail.attach_file('qr_code.png')
         qr_mail.send()
         #os.remove("qr.png")
 
