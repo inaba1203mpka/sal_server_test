@@ -6,8 +6,8 @@ Django-version : 2.1.5
 Python-version : 3.7.0    
 
 ### Admin-Page
-id : admin  
-pass : root 
+id : adminsalprojectb  
+pass : cqpKLMLtmz3gN4yIbZtR 
 
 ### import 
 random, string, qrcode, os, pillow, pytz    
