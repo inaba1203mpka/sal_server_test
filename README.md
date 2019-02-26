@@ -7,7 +7,7 @@ Python-version : 3.7.0
 
 ### Admin-Page
 id : adminsalprojectb  
-pass : cqpKLMLtmz3gN4yIbZtR 
+pass : qpKLMLtmz3gN4yIbZtR 
 
 ### import 
 random, string, qrcode, os, pillow, pytz    
