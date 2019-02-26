@@ -17,6 +17,12 @@
 				{% endfor %}
 			]
 		});
+		{% for k,v in reservation_date.items %} 
+		$('td[data-date={{k}}]').balloon({
+			html: true,
+			contents: "{{ v.f }}/{{ v.t }}~{{ v.e }}"
+		});
+		{% endfor %}
 	});
 </script>
 

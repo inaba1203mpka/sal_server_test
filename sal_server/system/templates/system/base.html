@@ -44,12 +44,15 @@
 
     <!--datetimepicker -->
     <!--CSS-->
-    <link href="{% static 'bootstrap_datepicker_plus/css/datepicker-widget.css' %}" type="text/css" media="all" rel="stylesheet">
+    <link href="{% static 'css/datepicker-widget.css' %}" type="text/css" media="all" rel="stylesheet">
 
     <!--JS-->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-    <script type="text/javascript" src="{% static 'bootstrap_datepicker_plus/js/datepicker-widget.js' %}"></script> 
+    <script type="text/javascript" src="{% static 'js/datepicker-widget.js' %}"></script> 
+
+    <!--balloon JS-->
+     <script src="{% static 'js/jquery.balloon.js' %}"></script>
           
     {% block script %}{% endblock %}
 
