@@ -252,7 +252,7 @@ class Facility_list(LoginRequiredMixin, generic.ListView):
 
     def get_queryset(self):
         facilities = self.model.objects.all()
-        if self.request.GET.get("area") != "エリアを選択":
+        if self.request.GET.get("area") is not None and self.request.GET.get("area") != "エリアを選択":
             area_filter = self.request.GET.get("area")
             print(area_filter)
             area_filter_model = Area.objects.get(area=area_filter)
