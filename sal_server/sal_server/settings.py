@@ -139,19 +139,19 @@ LOGIN_URL = 'system:login'
 # ログイン後の画面
 LOGIN_REDIRECT_URL = 'system:top'
 
-# メールをコンソールに表示する
-#EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+if os.uname()[1] == 'www.ngw.net.it-chiba.ac.jp':
+    # メールをSMTPで
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  
 
-# メールをSMTPで
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-
-EMAIL_HOST = 'localhost'
-EMAIL_PORT = 25
-EMAIL_HOST_USER = ''
-EMAIL_HOST_PASSWORD = ''
-EMAIL_USE_TLS = False
-DEFAULT_FROM_EMAIL = 'sdv2018b@www.ngw.uki.net.it-chiba.ac.jp'
-
+    EMAIL_HOST = 'localhost'
+    EMAIL_PORT = 25
+    EMAIL_HOST_USER = ''
+    EMAIL_HOST_PASSWORD = ''
+    EMAIL_USE_TLS = False
+    DEFAULT_FROM_EMAIL = 'sdv2018b@www.ngw.uki.net.it-chiba.ac.jp'
+else:
+    # メールをコンソールに表示する
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # rest_frameworkの設定
 REST_FRAMEWORK = {

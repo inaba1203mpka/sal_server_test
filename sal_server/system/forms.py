@@ -7,6 +7,7 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 from .models import Reservation
+import datetime
 
 class LoginForm(AuthenticationForm):
     """ログインフォーム"""
@@ -51,6 +52,7 @@ class ReservationForm(forms.ModelForm):
             'woman_out': forms.NumberInput(attrs={'placeholder':'数値を入力してください'}),
             'email': forms.TextInput(attrs={'placeholder':'例：minamiboso@example.com'}),
             'phone': forms.NumberInput(attrs={'placeholder':'例：0001111222'}),
+            #min追加する
             'date_select_0': forms.NumberInput(attrs={'placeholder':'例：2000-1-1'}),
             'time_for': forms.NumberInput(attrs={'placeholder':'例：1'})
 

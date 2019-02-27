@@ -163,7 +163,7 @@ class Reservation_create(LoginRequiredMixin, generic.CreateView):
     def form_valid(self, form):
         #入力欄にないフィールドを追加
         form.instance.owner_id = self.request.user
-        random_string = ''.join(random.choices(string.ascii_letters + string.digits, k=640))    #ランダム文字列生成
+        random_string = ''.join(random.choices(string.ascii_letters + string.digits, k=200))    #ランダム文字列生成
         form.instance.rdm_str = random_string   
         qr_code = qrcode.make( random_string )  #qr_code作成
         qr_code.save("qr.png") 
@@ -185,13 +185,17 @@ class Reservation_create(LoginRequiredMixin, generic.CreateView):
         messages.success(self.request, "予約しました")
         return super(Reservation_create, self).form_valid(form)
 
-
-    
-
     #フォームの初期値設定
     def get_initial(self):
         initial = super().get_initial()
-        user = User.objects.get(id=self.request.user.id)
+        user = User.objects.get(id=self.request.user.pk)
+        """
+        if self.request.POST :
+            initial = initial.copy()
+            facility_from_form = self.request.POST.get("facility")
+            facility = Facility.objects.get(facility=facility_from_form)
+            initial["facility"] = facility.facility
+        """
         initial["last_name"] = user.last_name
         initial["first_name"] = user.first_name
         initial["email"] = user.email
