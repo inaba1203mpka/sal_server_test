@@ -3,6 +3,7 @@
 {% block content %}
 <div class="container mt-3">
   <div class="container">
+<<<<<<< HEAD
     <div class="row no-gutters">
       <div class="col-md-4 offset-md-4">
         <h1 class="my-3 text-center">施設検索</h1>
@@ -24,6 +25,22 @@
                         {% endfor %}
                       </select>
                     </div>
+=======
+    <div class="row">
+      <div class="col-md-10 offset-md-1">
+        <div class="card mb-5">
+          <div class="card-body">
+            <form method="GET" action="">
+              <div class="row">
+                <div class="col-md-5 offset-md-2">
+                  <div class="form-group mt-4 mb-4">
+                    <select class="custom-select custom-select-lg" name="area">
+                      <option selected>エリアを選択</option>
+                      {% for a in areas %}
+                      <option>{{ a }}</option>
+                      {% endfor %}
+                    </select>
+>>>>>>> refs/remotes/origin/master
                   </div>
                   <div class="col-md-3 mt-4">
                     <div class="form-group">
@@ -84,11 +101,19 @@
 
                   <div class="col-6 mb-4 mt-3 text-right">
 
+<<<<<<< HEAD
                     <form action="{% url 'system:reservation_create' %}" method="POST">
                       <input type="hidden" name="facility" value="{{ f.facility }}">
                       <button type="submit" class="btn btn-success btn-block">予約</button>
                       {% csrf_token %}
                     </form>
+=======
+                  <form action="{% url 'system:reservation_create' %}" method="GET">
+                    <input type="hidden" name="facility" value="{{ f.facility }}">
+                    <button type="submit" class="btn btn-success btn-block">予約</button>
+                    {% csrf_token %}
+                  </form>
+>>>>>>> refs/remotes/origin/master
 
                   </div>
                 </div>

@@ -71,7 +71,8 @@ class Login(LoginView):
 
 class Logout(LoginRequiredMixin, LogoutView):
     """ ログアウトページ """
-    template_name = 'system/top.html'
+    #template_name = 'system/top.html'
+    template_name = 'system/login.html'
     login_url = "/login"
 
 
@@ -179,7 +180,7 @@ class Reservation_create(LoginRequiredMixin, generic.CreateView):
         #qr_mail.attach("qr_code.png", qrcode , 'image/png')  #qr_code添付
         qr_mail.attach_file(os.path.basename('qr.png'))
         qr_mail.send()
-        #os.remove("qr.png")
+        os.remove("qr.png")
 
         #完了
         messages.success(self.request, "予約しました")
@@ -189,13 +190,10 @@ class Reservation_create(LoginRequiredMixin, generic.CreateView):
     def get_initial(self):
         initial = super().get_initial()
         user = User.objects.get(id=self.request.user.pk)
-        """
-        if self.request.POST :
-            initial = initial.copy()
-            facility_from_form = self.request.POST.get("facility")
+        if self.request.GET.get("facility"):
+            facility_from_form = self.request.GET.get("facility")
             facility = Facility.objects.get(facility=facility_from_form)
-            initial["facility"] = facility.facility
-        """
+            initial["facility"] = facility
         initial["last_name"] = user.last_name
         initial["first_name"] = user.first_name
         initial["email"] = user.email
@@ -254,11 +252,9 @@ class Facility_list(LoginRequiredMixin, generic.ListView):
 
     def get_queryset(self):
         facilities = self.model.objects.all()
-        # いらないかも
-        # use_kind_filter = self.request.GET.get('purpose')
-        area_filter = self.request.GET.get("area")
-        # 初期表示以外
-        if area_filter is not None :
+        if self.request.GET.get("area") is not None and self.request.GET.get("area") != "エリアを選択":
+            area_filter = self.request.GET.get("area")
+            print(area_filter)
             area_filter_model = Area.objects.get(area=area_filter)
             facilities = self.model.objects.filter(Area_id=area_filter_model.id)
         return facilities
