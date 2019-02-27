@@ -1,109 +1,116 @@
 <!DOCTYPE>
 <html lang="ja">
+
 <head>
 
-    {% load static %}
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  {% load static %}
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
-          integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.css"
-	 		integrity="sha384-CSpejLAxvQjhYnaGctk31dTIAVVJ37ll9TXZ5+siSJ/ZYHLO6/Ae3wBxMkkeePta" crossorigin="anonymous">
-	<link rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.print.css"
-			integrity="sha384-z97gwhg6eih9y0LEKeeKhp3kzktXuksd8JpECb6SWwru2UVRSD3KgsyEAwCXzTb1"crossorigin="anonymous" media='print' >
-    <title>公共施設予約システム</title>
-    
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
+    integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.css"
+    integrity="sha384-CSpejLAxvQjhYnaGctk31dTIAVVJ37ll9TXZ5+siSJ/ZYHLO6/Ae3wBxMkkeePta" crossorigin="anonymous">
+  <link rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.print.css"
+    integrity="sha384-z97gwhg6eih9y0LEKeeKhp3kzktXuksd8JpECb6SWwru2UVRSD3KgsyEAwCXzTb1" crossorigin="anonymous"
+    media='print'>
+  <title>公共施設予約システム</title>
+
 </head>
+
 <body>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
-            integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
-            crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
-            integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
-            crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js" 
-    			integrity="sha384-tMry5U11FUSp/GAwrcT5eBnH0jsu6qedzOXY3Y2YKBn0C5t6Y385r1Ek4CWDjbvC" 
-    			crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" 
-    			integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" 
-    			crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.js"
-    			integrity="sha384-gyVAognIf5iCcX71QjZsjnNfQ074SU+gjJnQ16dCmmeSnoVglijgfmICPJlShL7c"
-    			crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/locale/ja.js" 
-    			integrity="sha384-3g00X8X6uNpt0mkFtoyT5J25ASNVc++QIeHgCWwdjDSF/Rf9txoUv+9bUgQ6tHdu" 
-          crossorigin="anonymous"></script>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"
+    integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+    integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js"
+    integrity="sha384-tMry5U11FUSp/GAwrcT5eBnH0jsu6qedzOXY3Y2YKBn0C5t6Y385r1Ek4CWDjbvC"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"
+    integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.js"
+    integrity="sha384-gyVAognIf5iCcX71QjZsjnNfQ074SU+gjJnQ16dCmmeSnoVglijgfmICPJlShL7c"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/locale/ja.js"
+    integrity="sha384-3g00X8X6uNpt0mkFtoyT5J25ASNVc++QIeHgCWwdjDSF/Rf9txoUv+9bUgQ6tHdu"
+    crossorigin="anonymous"></script>
 
-    <!--datetimepicker -->
-    <!--CSS-->
-    <link href="{% static 'css/datepicker-widget.css' %}" type="text/css" media="all" rel="stylesheet">
+  <!--datetimepicker -->
+  <!--CSS-->
+  <link href="{% static 'css/datepicker-widget.css' %}" type="text/css" media="all" rel="stylesheet">
 
-    <!--JS-->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-    <script type="text/javascript" src="{% static 'js/datepicker-widget.js' %}"></script> 
+  <!--JS-->
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment-with-locales.min.js"></script>
+  <script type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+  <script type="text/javascript" src="{% static 'js/datepicker-widget.js' %}"></script>
 
-    <!--balloon JS-->
-     <script src="{% static 'js/jquery.balloon.js' %}"></script>
-          
-    {% block script %}{% endblock %}
+  <!--balloon JS-->
+  <script src="{% static 'js/jquery.balloon.js' %}"></script>
 
-    
-   <!-- ナビバー -->
-    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <a class="navbar-brand" href="{% url 'system:top' %}">公共施設予約システム</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+  {% block script %}{% endblock %}
 
-        <!--ナビゲーション-->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            {% if user.is_authenticated %}
-            <li>
-                <a class="nav-item nav-link " href="{% url 'system:top' %}">マイページ</a>
-            </li>
-            <li>
-                <a class="nav-item nav-link " href="{% url 'system:facility_list' %}">施設検索</a>
-            </li>
-            <li>
-                <a class="nav-item nav-link " href="{% url 'system:reservation_create' %}">予約</a>
-            </li>
-            <li>
-                <a class="nav-item nav-link " href="{% url 'system:reservation_list' %}">予約リスト</a>
-            </li>
-            
-          </ul>
-          <ul class="navbar-nav ml-auto">
-            <li>
-              <a class="nav-item nav-link ml-auto" href="{% url 'system:logout' %}">ログアウト</a>
-            </li>
-          </ul>
-            {% else %}
-            <li class="nav-item">
-              <a class="nav-item nav-link ml-auto" href="{% url 'system:login' %}">
-              ようこそ、ゲスト！ログインはこちら
-            </a>
-            </li>
-            {% endif %}
-          </ul>
-        </div>
-    </nav>
-  
-      <!-- メインコンテント -->
-      <div class="container mt-3">
-          {% block content %}{% endblock %}
-      </div>
 
-      
-  
+  <!-- ナビバー -->
+  <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'system:top' %}">公共施設予約システム</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!--ナビゲーション-->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        {% if user.is_authenticated %}
+        <li>
+          <a class="nav-item nav-link " href="{% url 'system:top' %}">マイページ</a>
+        </li>
+        <li>
+          <a class="nav-item nav-link " href="{% url 'system:facility_list' %}">施設検索</a>
+        </li>
+        <li>
+          <a class="nav-item nav-link " href="{% url 'system:reservation_create' %}">予約</a>
+        </li>
+        <li>
+          <a class="nav-item nav-link " href="{% url 'system:reservation_list' %}">予約リスト</a>
+        </li>
+
+      </ul>
+      <ul class="navbar-nav ml-auto">
+        <li>
+          <a class="nav-item nav-link ml-auto" href="{% url 'system:logout' %}">ログアウト</a>
+        </li>
+      </ul>
+      {% else %}
+      <li class="nav-item">
+        <a class="nav-item nav-link ml-auto" href="{% url 'system:login' %}">
+          ようこそ、ゲスト！ログインはこちら
+        </a>
+      </li>
+      {% endif %}
+      </ul>
+    </div>
+  </nav>
+
+  <!-- メインコンテント -->
+  {% block content %}{% endblock %}
+
+
+
+
+
 </body>
+
 </html>

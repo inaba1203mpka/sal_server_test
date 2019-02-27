@@ -4,77 +4,175 @@
 <script>
 	$(document).ready(function () {
 		$('#calendar').fullCalendar({
-			timezone : "Asia/Tokyo",
-			events:[
-				{% for k,v in reservation_date.items %}      
+			timezone: "Asia/Tokyo",
+			events: [
+				{% for k, v in reservation_date.items %}      
 				{
-					start:"{{ k }}",
-					end:"{{ k }}",
-					title:"{{ v.f }}/{{ v.t }}~{{ v.e }}",
-					color: '#5bc0de',
-					
-				},
-				{% endfor %}
+				start: "{{ k }}",
+				end: "{{ k }}",
+				title: "{{ v.f }}/{{ v.t }}~{{ v.e }}",
+				color: '#5bc0de',
+
+			},
+			{% endfor %}
 			]
 		});
-		{% for k,v in reservation_date.items %} 
-		$('td[data-date={{k}}]').balloon({
-			html: true,
-			contents: "{{ v.f }}/{{ v.t }}~{{ v.e }}"
-		});
-		{% endfor %}
+	{% for k, v in reservation_date.items %}
+	$('td[data-date={{k}}]').balloon({
+		html: true,
+		contents: "{{ v.f }}/{{ v.t }}~{{ v.e }}"
+	});
+	{% endfor %}
 	});
 </script>
+
+<style type="text/css">
+	{% load static %}
+
+	.jumbotron-extend {
+		position: relative;
+		height: 100vh;
+		min-height: 300px;
+		background: url("{% static 'system/tomiura.jpg' %}") no-repeat center center;
+		background-size: cover;
+	}
+</style>
 
 {% endblock %}
 
 {% block content %}
 
-<div class="container">
-	<div class="row no-gutters">
-		<div class="col-md-4 offset-md-4">
-			<h1 class="my-3 text-center">利用方法</h1>
+
+<!-- PC用ページ -->
+<div class="d-none d-lg-block">
+	<!-- ジャンボトロン -->
+	<div class="jumbotron jumbotron-extend mb-0 " style="height: 500px;">
+		<div class="row">
+			<div class="offset-8"></div>
+			<h1 class="text-white float-right">施 設 利 用 をこれひとつで。</h1>
+
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-md-4">
-			<a href="{% url 'system:facility_list' %}" class="card mb-4">
-				{% load static %}
-				<img class="card-img-top" src="{% static 'system/no_image.jpg' %}">
-				<div class="card-body">
-					<h3 class="card-title">施設選択</h3>
-					<h6 class="card-text">施設の一覧を確認することができます。</h6>
-				</div>
-			</a>
+	<!-- 利用方法 -->
+	<div class="container">
+		<div class="row no-gutters">
+			<div class="col-md-4 offset-md-4">
+				<h1 class="my-3 text-center">利用方法</h1>
+			</div>
 		</div>
-		<div class="col-md-4">
-			<a href="{% url 'system:reservation_create' %}" class="card mb-4">
-				{% load static %}
-				<img class="card-img-top" src="{% static 'system/no_image.jpg' %}">
-				<div class="card-body">
-					<h3 class="card-title">予約</h3>
-					<h6 class="card-text">各種項目をご入力して頂き、施設の予約を行うことができます。</h6>
-				</div>
-			</a>
+		<div class="row">
+			<div class="col-md-4">
+				<a href="{% url 'system:facility_list' %}" class="card mb-4">
+					{% load static %}
+					<img class="card-img-top" src="{% static 'system/tomiura_ashiyu.jpg' %}" style="height: 300px;">
+					<div class="card-body">
+						<h3 class="card-title">施設検索</h3>
+						<h6 class="card-text">施設の一覧から、エリアごとに検索することができます。</h6>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4">
+				<a href="{% url 'system:reservation_create' %}" class="card mb-4">
+					{% load static %}
+					<img class="card-img-top" src="{% static 'system/reservation5.jpg' %}" style="height: 300px;">
+					<div class="card-body">
+						<h3 class="card-title">予約</h3>
+						<h6 class="card-text">各種項目を入力して頂き、施設の予約を行うことができます。</h6>
+					</div>
+				</a>
+			</div>
+			<div class="col-md-4">
+				<a href="{% url 'system:reservation_list' %}" class="card mb-4">
+					{% load static %}
+					<img class="card-img-top" src="{% static 'system/reservation3.jpg' %}" style="height: 300px;">
+					<div class="card-body">
+						<h3 class="card-title">予約リスト</h3>
+						<h6 class="card-text">予約情報の確認、削除を行うことができます。</h6>
+					</div>
+				</a>
+			</div>
 		</div>
-		<div class="col-md-4">
-			<a href="{% url 'system:reservation_list' %}" class="card mb-4">
-				{% load static %}
-				<img class="card-img-top" src="{% static 'system/no_image.jpg' %}">
-				<div class="card-body">
-					<h3 class="card-title">予約一覧</h3>
-					<h6 class="card-text">予約情報の確認、削除を行うことができます。</h6>
+		<div class="row no-gutters">
+			<div class="col-md-4 offset-md-4">
+				<h1 class="my-3 text-center">カレンダー</h1>
+			</div>
+		</div>
+	</div>
+
+
+</div>
+
+<!-- スマートフォンページ -->
+<div class="container mt-3 d-lg-none">
+
+	<!-- ジャンボトロン -->
+	<div class="jumbotron jumbotron-extend mb-0 " style="height: 300px;">
+		<div class="container">
+			<h2 class="text-white">施設利用を<br>これひとつで。</h2>
+
+
+		</div>
+	</div>
+	<!-- 利用方法 -->
+	<div class="container">
+		<div class="row no-gutters">
+			<div class="col-md-4 offset-md-4">
+				<h1 class="my-3 text-center">利用方法</h1>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				<div class="card mb-4">
+					{% load static %}
+					<a href="{% url 'system:facility_list' %}">
+						<img class="card-img-top" src="{% static 'system/image001b.png' %}">
+					</a>
+
+					<div class="card-body">
+						<h6 class="card-text">施設の一覧から、エリアごとに検索することができます。</h6>
+					</div>
 				</div>
-			</a>
+			</div>
+			<div class="col-md-4">
+				<div class="card mb-4">
+					{% load static %}
+					<a href="{% url 'system:reservation_create' %}">
+						<img class="card-img-top" src="{% static 'system/image002a.png' %}">
+					</a>
+					<div class="card-body">
+						<h6 class="card-text">各種項目を入力して頂き、施設の予約を行うことができます。</h6>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="card mb-4">
+					{% load static %}
+					<a href="{% url 'system:reservation_list' %}">
+						<img class="card-img-top" src="{% static 'system/image003b.png' %}">
+					</a>
+					<div class="card-body">
+						<h6 class="card-text">予約情報の確認、削除を行うことができます。</h6>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row no-gutters">
+			<div class="col-md-4 offset-md-4">
+				<h1 class="my-3 text-center">カレンダー</h1>
+			</div>
 		</div>
 	</div>
 </div>
 
-<style>
-	#calendar{
-		max-width: 900px;
-		margin: 0 auto;
-	}
-</style>
-<div id='calendar'></div>
+<!-- カレンダー -->
+<div class="container mt-3">
+	<style>
+		#calendar {
+			max-width: 900px;
+			margin: 0 auto;
+		}
+	</style>
+	<div id='calendar'></div>
+</div>
+
 {% endblock %}

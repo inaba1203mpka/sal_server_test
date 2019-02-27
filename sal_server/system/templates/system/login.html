@@ -1,36 +1,38 @@
 {% extends "system/base.html" %}
 {% block content %}
-<div class="row">
-    <!-- 左側、ログインエリア -->
-    <div class="container">
-        <div class="row no-gutters">
-          <div class="col-md-4 offset-md-4">
-            <h1 class="my-3 text-center">ログイン</h1>
-          </div>
-        </div>
-    <div class="card col-md-4 offset-md-4 mt-2">
-        <div class="card-body">
-            
-            <form action="{% url 'system:login' %}" method="POST">
-                {{ form.non_field_errors }}
-                {% for field in form %}
-                    {{ field }}
-                    {{ field.errors }}
-                    <hr>
-                {% endfor %}
-                <button type="submit" class="btn btn-success btn-lg btn-block" >ログイン</button>
-                <input type="hidden" name="next" value="{{ next }}" />
-                {% csrf_token %}
-            </form>
-        </div>
-    </div><!-- 左側、ログインエリアおわり -->
+<div class="container mt-3">
+    <div class="row">
+        <!-- 左側、ログインエリア -->
+        <div class="container">
+            <div class="row no-gutters">
+                <div class="col-md-4 offset-md-4">
+                    <h1 class="my-3 text-center">ログイン</h1>
+                </div>
+            </div>
+            <div class="card col-md-4 offset-md-4 mt-2">
+                <div class="card-body">
 
-    <!-- 右側、会員登録エリア -->
-    <div class="card col-md-4 offset-md-4 mt-4">
-        <div class="card-body">
-            <a href="{% url 'system:user_create' %}" class="btn btn-success btn-lg btn-block" >会員登録</a>
+                    <form action="{% url 'system:login' %}" method="POST">
+                        {{ form.non_field_errors }}
+                        {% for field in form %}
+                        {{ field }}
+                        {{ field.errors }}
+                        <hr>
+                        {% endfor %}
+                        <button type="submit" class="btn btn-success btn-lg btn-block">ログイン</button>
+                        <input type="hidden" name="next" value="{{ next }}" />
+                        {% csrf_token %}
+                    </form>
+                </div>
+            </div><!-- 左側、ログインエリアおわり -->
+
+            <!-- 右側、会員登録エリア -->
+            <div class="card col-md-4 offset-md-4 mt-4">
+                <div class="card-body">
+                    <a href="{% url 'system:user_create' %}" class="btn btn-success btn-lg btn-block">会員登録</a>
+                </div>
+            </div><!-- 右側、会員登録エリアおわり -->
         </div>
-    </div><!-- 右側、会員登録エリアおわり -->
-</div>
+    </div>
 </div>
 {% endblock %}
