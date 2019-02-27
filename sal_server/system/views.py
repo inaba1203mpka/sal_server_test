@@ -71,7 +71,8 @@ class Login(LoginView):
 
 class Logout(LoginRequiredMixin, LogoutView):
     """ ログアウトページ """
-    template_name = 'system/top.html'
+    #template_name = 'system/top.html'
+    template_name = 'system/login.html'
     login_url = "/login"
 
 
@@ -251,9 +252,9 @@ class Facility_list(LoginRequiredMixin, generic.ListView):
 
     def get_queryset(self):
         facilities = self.model.objects.all()
-        area_filter = self.request.GET.get("area")
-        # 初期表示以外
-        if area_filter is not None :
+        if self.request.GET.get("area") != "エリアを選択":
+            area_filter = self.request.GET.get("area")
+            print(area_filter)
             area_filter_model = Area.objects.get(area=area_filter)
             facilities = self.model.objects.filter(Area_id=area_filter_model.id)
         return facilities
